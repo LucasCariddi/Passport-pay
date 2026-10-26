@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1600px; height: 900px; background: #0c1a16; color: #fff; font-family: "IBM Plex Sans", sans-serif; overflow: hidden;
+    background-image: radial-gradient(70% 60% at 85% 0%, rgba(63,180,143,.22), transparent 60%), radial-gradient(60% 60% at 0% 100%, rgba(15,92,77,.45), transparent 60%); }
+  .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 90px 100px; height: 100%; align-items: center; }
+  h1 { font-family: "Bricolage Grotesque"; font-size: 88px; line-height: 1; letter-spacing: -.02em; }
+  h1 span { color: #3fb48f; }
+  p { font-size: 30px; color: #cfe9df; margin-top: 28px; line-height: 1.4; }
+  .play { margin-top: 50px; display: inline-flex; align-items: center; gap: 18px; font-size: 26px; font-weight: 600; }
+  .play i { width: 84px; height: 84px; border-radius: 50%; background: #3fb48f; display: grid; place-items: center; }
+  .term { background: #060e0c; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 34px 36px; font-family: "IBM Plex Mono", monospace; font-size: 25px; line-height: 1.75; }
+  .term .p { color: #3fb48f; } .ok { color: #3fb48f; } .bad { color: #ff8a7f; } .dim { color: rgba(255,255,255,.5); }
+</style></head>
+<body><div class="wrap">
+  <div>
+    <h1>Passport Pay<br><span>demo en testnet</span></h1>
+    <p>Tres pagos x402 pasan. El cuarto, por encima del tope, lo rechaza la cuenta del agente en la red.</p>
+    <div class="play"><i><svg width="34" height="34" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" fill="#0c1a16"/></svg></i>3 minutos</div>
+  </div>
+  <div class="term">
+    <div><span class="p">$</span> pnpm demo</div>
+    <div class="dim">register  fd24e560…f1ad08</div>
+    <div>pago 1  0,01 USDC  <span class="ok">SUCCESS</span></div>
+    <div>pago 2  0,01 USDC  <span class="ok">SUCCESS</span></div>
+    <div>pago 3  0,01 USDC  <span class="ok">SUCCESS</span></div>
+    <div>pago 4  0,01 USDC  <span class="bad">FAILED #6</span></div>
+    <div>revoke, pago 5  <span class="bad">FAILED #1</span></div>
+    <div class="ok">DEMO OK 18/18</div>
+  </div>
+</div></body></html>

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Passport Pay app</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Public+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F5F0}
+a{color:#0B6B5C}a:hover{color:#12372A}
+</style>
+</helmet>
+<div style="font-family: 'Public Sans', system-ui, sans-serif; color: #0C1A13; background: #F3F5F0; min-width: 0">
+
+<header style="background: #12372A; color: #F5ECD3">
+<div style="max-width: 1320px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="/" style="display: flex; align-items: center; gap: 10px; color: #F5ECD3; text-decoration: none">
+<svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="3" width="22" height="26" rx="3" fill="#E6D3A3"></rect><circle cx="16" cy="13" r="5" fill="none" stroke="#12372A" stroke-width="1.6"></circle><path d="M11 13h10M16 8c2 2 2 8 0 10M16 8c-2 2-2 8 0 10" fill="none" stroke="#12372A" stroke-width="1.2"></path><path d="M10 23h12" stroke="#12372A" stroke-width="1.6" stroke-linecap="round"></path></svg>
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 18px">Passport Pay</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; padding: 3px 8px; border: 1px solid #6E8A7A; border-radius: 4px; color: #E6D3A3">TESTNET</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<label for="acct" style="font-size: 13px; color: #CFC3A0">Agent account</label>
+<select id="acct" style="min-height: 40px; border-radius: 8px; border: 1px solid #6E8A7A; background: #1C4535; color: #F5ECD3; padding: 0 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">
+<option>Public demo · CAGMBEI3…B7ZV</option>
+<option>My agents</option>
+</select>
+<button type="button" style="min-height: 40px; padding: 0 16px; border-radius: 999px; border: 0; background: #E6D3A3; color: #12372A; font-weight: 700; font-size: 14px">Connect Freighter</button>
+</div>
+</div>
+</header>
+
+<nav aria-label="Sections" style="max-width: 1320px; margin: 0 auto; padding: 18px 24px 0; display: flex; flex-wrap: wrap; gap: 6px">
+<a href="#fire" style="min-height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 999px; background: #0C1A13; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 14px">Prompt injection test</a>
+<a href="#try" style="min-height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 999px; border: 1px solid #B9C6BC; color: #0C1A13; text-decoration: none; font-weight: 600; font-size: 14px">Try as an agent</a>
+<a href="#panel" style="min-height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 999px; border: 1px solid #B9C6BC; color: #0C1A13; text-decoration: none; font-weight: 600; font-size: 14px">Owner panel</a>
+<a href="#catalog" style="min-height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 999px; border: 1px solid #B9C6BC; color: #0C1A13; text-decoration: none; font-weight: 600; font-size: 14px">Catalog</a>
+<a href="#passport" style="min-height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 999px; border: 1px solid #B9C6BC; color: #0C1A13; text-decoration: none; font-weight: 600; font-size: 14px">New passport</a>
+</nav>
+
+<main style="max-width: 1320px; margin: 0 auto; padding: 20px 24px 64px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<aside id="panel" style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<section style="background: #FFFFFF; border: 1px solid #CFD8D0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 700">Agent #443284932</h2>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #E2F0EA; color: #0B4D43">ACTIVE</span>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; font-size: 13px">
+<div><dt style="color: #4A5A51">Account</dt><dd style="margin: 2px 0 0; font-family: 'IBM Plex Mono', monospace; overflow-wrap: anywhere">CAGMBEI3…B7ZV</dd></div>
+<div><dt style="color: #4A5A51">Balance</dt><dd style="margin: 2px 0 0; font-family: 'IBM Plex Mono', monospace">2.96 USDC</dd></div>
+<div><dt style="color: #4A5A51">Passport</dt><dd style="margin: 2px 0 0">Verified onchain</dd></div>
+<div><dt style="color: #4A5A51">Contract</dt><dd style="margin: 2px 0 0; font-family: 'IBM Plex Mono', monospace">wasm f5ec1e6d…</dd></div>
+</dl>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #CFD8D0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 700">Spend cap</h2>
+<span style="font-size: 13px; color: #4A5A51">resets in 41 min</span>
+</div>
+<p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em">0.03 <span style="font-size: 18px; font-weight: 600; color: #4A5A51">of 0.05 USDC</span></p>
+<div role="img" aria-label="60 percent of the cap used" style="height: 12px; border-radius: 999px; background: #E1E7E2; overflow: hidden"><div style="width: 60%; height: 100%; background: #12372A"></div></div>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #33443A">The smaller of your cap and the passport's cap applies. Enforced by the account contract, not by this page.</p>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<label for="cap" style="position: absolute; width: 1px; height: 1px; overflow: hidden">New cap in USDC</label>
+<input id="cap" value="0.05" style="flex: 1 1 100px; min-height: 44px; border-radius: 8px; border: 1px solid #B9C6BC; padding: 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 15px">
+<button type="button" style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 0; background: #12372A; color: #FFFFFF; font-weight: 600">Set cap</button>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #CFD8D0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 700">Allowed payees</h2>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #33443A">The agent can only pay these addresses. Anyone else gets PayeeNotAllowed from the network.</p>
+<sc-for list="{{payees}}" as="p" hint-placeholder-count="2">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; border-top: 1px solid #E1E7E2; padding-top: 10px">
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<span style="font-weight: 600; font-size: 14px">{{p.name}}</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5A51; overflow-wrap: anywhere">{{p.addr}}</span>
+</div>
+<button type="button" aria-label="Remove payee" style="min-width: 44px; min-height: 44px; border-radius: 8px; border: 1px solid #CFD8D0; background: #FFFFFF; color: #4A5A51">
+<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+</button>
+</div>
+</sc-for>
+<button type="button" style="min-height: 44px; border-radius: 8px; border: 1px dashed #8FA396; background: transparent; color: #12372A; font-weight: 600">Add payee</button>
+</section>
+
+<section style="border: 1.5px solid #C23A1A; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 10px; background: #FFF7F4">
+<h2 style="margin: 0; font-size: 16px; font-weight: 700; color: #9A2A10">Revoke this agent</h2>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #4B2A16">One signature from you and no further payment settles, wherever the agent is running. Funds stay withdrawable.</p>
+<button type="button" style="min-height: 44px; border-radius: 8px; border: 0; background: #C23A1A; color: #FFFFFF; font-weight: 700">Revoke</button>
+</section>
+</aside>
+
+<div style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+
+<section id="fire" style="background: #0C1A13; color: #EAF0EA; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #FF8A64">Fire test</span>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 32px; line-height: 1.05; letter-spacing: -0.02em">Hijack the agent. Watch the network refuse.</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B8C6BC">The <a href="/trampa" style="color: #FF8A64">trap page</a> tells the agent to pay 5 USDC to an attacker. This button sends exactly that order, signed with the demo agent's key. The real LLM agent run is in the video and in scenario/.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+<div style="background: #1B2A22; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8FA396">The order</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #FFD2C2">pay GATTACK… 5 USDC</span>
+</div>
+<div style="background: #1B2A22; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8FA396">Signed by</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">agent key GBNS7F…D42</span>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center">
+<button type="button" style="min-height: 52px; padding: 0 24px; border-radius: 999px; border: 0; background: #FF6A3D; color: #1E0A04; font-weight: 800; font-size: 16px">Send the attacker's order</button>
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
+<div style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #FF6A3D; color: #FF6A3D; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(-12deg); text-align: center; gap: 2px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 0.18em">STELLAR</span>
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px">REJECTED</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px">PayeeNotAllowed</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 700; color: #FF8A64">FAILED onchain</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #B8C6BC">Error(Contract, #[CODE]) PayeeNotAllowed</span>
+<a href="https://stellar.expert/explorer/testnet/tx/[INJECTION TX HASH]" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #FF8A64">View tx on stellar.expert</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="try" style="background: #FFFFFF; border: 1px solid #CFD8D0; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em">Try as an agent</h2>
+<span style="font-size: 13px; color: #4A5A51">One request per minute per visitor</span>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
+<sc-for list="{{tries}}" as="t" hint-placeholder-count="3">
+<li style="border: 1px solid #E1E7E2; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5A51">{{t.n}}</span>
+<span style="font-weight: 700">{{t.title}}</span>
+<span style="{{t.badge}}">{{t.result}}</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #33443A; overflow-wrap: anywhere">{{t.detail}}</span>
+</li>
+</sc-for>
+</ol>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" style="min-height: 48px; padding: 0 20px; border-radius: 999px; border: 0; background: #12372A; color: #FFFFFF; font-weight: 700">Pay 0.01 USDC and get data</button>
+<button type="button" style="min-height: 48px; padding: 0 20px; border-radius: 999px; border: 1.5px solid #C23A1A; background: #FFFFFF; color: #9A2A10; font-weight: 700">Try to exceed the cap</button>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #CFD8D0; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">What your agent bought</h2>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14px">
+<thead><tr style="text-align: left; color: #4A5A51"><th style="padding: 8px 10px; font-weight: 600">Service</th><th style="padding: 8px 10px; font-weight: 600">Amount</th><th style="padding: 8px 10px; font-weight: 600">When</th><th style="padding: 8px 10px; font-weight: 600">Tx</th></tr></thead>
+<tbody>
+<sc-for list="{{buys}}" as="b" hint-placeholder-count="3">
+<tr style="border-top: 1px solid #E1E7E2"><td style="padding: 10px">{{b.svc}}</td><td style="padding: 10px; font-family: 'IBM Plex Mono', monospace">{{b.amt}}</td><td style="padding: 10px; color: #4A5A51">{{b.when}}</td><td style="padding: 10px"><a href="{{b.href}}" style="font-family: 'IBM Plex Mono', monospace">{{b.short}}</a></td></tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="catalog" style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em">Catalog</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="3">
+<div style="background: #FFFFFF; border: 1px solid #CFD8D0; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; gap: 8px; align-items: baseline"><span style="font-weight: 700">{{s.name}}</span><span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: #12372A; white-space: nowrap">{{s.price}}</span></div>
+<span style="font-size: 13px; color: #33443A; line-height: 1.5">{{s.body}}</span>
+<span style="font-size: 12px; color: #4A5A51">Only agents with a passport can buy</span>
+<button type="button" style="min-height: 40px; border-radius: 8px; border: 1px solid #B9C6BC; background: #F3F5F0; color: #0C1A13; font-weight: 600; font-size: 13px">How an agent buys it</button>
+</div>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 14px; color: #4A5A51">Coming soon: any API can list here.</p>
+</section>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1640}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const ok = 'font-family: IBM Plex Mono, monospace; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #E2F0EA; color: #0B4D43; align-self: flex-start';
+    const bad = 'font-family: IBM Plex Mono, monospace; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #FBE4DC; color: #9A2A10; align-self: flex-start';
+    const tx = (h) => 'https://stellar.expert/explorer/testnet/tx/' + h;
+    return {
+      payees: [
+        { name: 'Passport Pay API (merchant)', addr: 'GCLNNJKD…VPPJ' },
+      ],
+      tries: [
+        { n: '01', title: 'Ask without paying', result: 'HTTP 402', badge: ok, detail: 'exact · stellar:testnet · 0.01 USDC' },
+        { n: '02', title: 'Pay over x402', result: 'SUCCESS', badge: ok, detail: 'tx 1488f949…0161' },
+        { n: '03', title: 'Exceed the cap', result: 'FAILED · CapExceeded', badge: bad, detail: 'tx bab36b82…de15' },
+      ],
+      buys: [
+        { svc: 'Network insight', amt: '0.01 USDC', when: '3 min ago', short: '1488f949…0161', href: tx('1488f949e52f27886367cea8aa522d011bb7162c0aa4a59f24fa299300000161') },
+        { svc: 'Network insight', amt: '0.01 USDC', when: '1 h ago', short: 'f93a265f…3ea7', href: tx('f93a265f2eeb151280672c77229292e8329e063554812dadcf7d9c2329e93ea7') },
+      ],
+      services: [
+        { name: 'Network insight', price: '0.01 USDC', body: 'Ledger, protocol and fee stats.' },
+        { name: 'XLM/USDC quote', price: '0.02 USDC', body: 'Live price from the Stellar DEX.' },
+        { name: 'Full report', price: '0.05 to 100', body: 'Sized by the agent. The cap decides.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

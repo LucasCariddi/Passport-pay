@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Slide 3 how it works</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Public+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1920px; height: 1080px; box-sizing: border-box; background: #F3F5F0; color: #0C1A13; font-family: 'Public Sans', system-ui, sans-serif; padding: 110px 140px; display: flex; flex-direction: column; gap: 64px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 112px; line-height: 1; letter-spacing: -0.04em">Prove. Bind. Enforce.</h2>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 24px; color: #4A5A51">Official x402 facilitator, unchanged</span>
+</div>
+<div style="flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 4px solid #0C1A13">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+<div style="padding: 44px 48px 0 0; display: flex; flex-direction: column; gap: 22px; border-right: 1px solid #CFD8D0; margin-right: 48px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 26px; color: #0B6B5C">{{s.n}}</span>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 52px; line-height: 1.05; letter-spacing: -0.02em">{{s.title}}</h3>
+<p style="margin: 0; font-size: 30px; line-height: 1.45; color: #33443A">{{s.body}}</p>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 22px; color: #4A5A51; margin-top: auto; padding-bottom: 8px">{{s.tech}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      steps: [
+        { n: '01 · Prove', title: 'A human stands behind it', body: 'A ZK passport, made in the browser in about two seconds. No identity revealed.', tech: 'Groth16 · BN254' },
+        { n: '02 · Bind', title: 'One passport, one account', body: 'The factory verifies the proof and deploys the agent’s smart account in the same transaction.', tech: 'PassportFactory.register' },
+        { n: '03 · Enforce', title: 'Every payment passes customs', body: 'Live passport, allowed payee, cap for the period, not revoked. Otherwise the ledger refuses.', tech: 'PassportAccount.__check_auth' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

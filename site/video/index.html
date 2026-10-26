@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demo video · Passport Pay</title>
+<meta name="description" content="Watch the Passport Pay demo (2:23): a real LLM agent gets prompt-injected, signs a payment to an attacker and Stellar testnet rejects it onchain. Then a legitimate purchase over x402." />
+<meta property="og:title" content="Passport Pay · Demo video" />
+<meta property="og:description" content="A hijacked agent signs. The network still says no. 2:23 on Stellar testnet." />
+<meta property="og:image" content="/media/demo-poster.png" />
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)" />
+<!-- Static page (site/video), published as /video by scripts/build-vercel.sh. It uses the landing's
+     /site.css and /theme.js; header and footer mirror web/landing/build/site.mjs. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2309090B'/%3E%3Cpath d='M17 12.6c0 3.1-2.2 4.7-4.8 5.6a.6.6 0 0 1-.4 0C9.2 17.3 7 15.7 7 12.6V8.2a.6.6 0 0 1 .6-.6c1.3 0 2.8-.8 3.9-1.7a.7.7 0 0 1 1 0c1.1.9 2.6 1.7 3.9 1.7a.6.6 0 0 1 .6.6z' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='m9.8 12.2 1.5 1.5 3-3' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="/site.css" />
+<script src="/theme.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap header-row">
+  <a class="brand" href="/#top"><svg class="mark" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="currentColor"/><path d="M17 12.6c0 3.1-2.2 4.7-4.8 5.6a.6.6 0 0 1-.4 0C9.2 17.3 7 15.7 7 12.6V8.2a.6.6 0 0 1 .6-.6c1.3 0 2.8-.8 3.9-1.7a.7.7 0 0 1 1 0c1.1.9 2.6 1.7 3.9 1.7a.6.6 0 0 1 .6.6z" fill="none" stroke="var(--bg)" stroke-width="1.4" stroke-linejoin="round"/><path d="m9.8 12.2 1.5 1.5 3-3" fill="none" stroke="var(--bg)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span translate="no">Passport Pay</span></a>
+  <nav class="site-nav" aria-label="Main">
+    <a class="nav-link" href="/#how">How it works</a>
+    <a class="nav-link" href="/video" aria-current="page">Demo</a>
+    <a class="nav-link" href="/#proof">Proof</a>
+    <a class="nav-link" href="/presentacion">Deck</a>
+    <a class="btn primary sm" href="/app">Try the live demo</a>
+    <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark mode"><svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+  </nav>
+</div></header>
+
+<main id="main" class="wrap video-page">
+  <header class="vp-head">
+    <span class="eyebrow">Demo video · Stellar testnet</span>
+    <h1>Watch the demo (2:23)</h1>
+    <p class="lead">A real LLM agent gets prompt-injected and signs a payment to an attacker. Its own smart account refuses it onchain. Then a legitimate purchase goes through.</p>
+    <div class="ctas">
+      <a class="btn primary lg" href="/app#fire">Run the injection test<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a class="btn outline lg" href="/presentacion">See the 2:30 pitch</a>
+    </div>
+  </header>
+
+  <div class="card video-card">
+    <video controls preload="metadata" playsinline poster="/media/demo-poster.png" width="1920" height="1080" aria-label="Passport Pay demo video, 2 minutes 23 seconds, captions on screen, no voiceover">
+      <source src="/media/demo.mp4" type="video/mp4" />
+      <a href="/media/demo.mp4">Download the demo video (MP4)</a>
+    </video>
+    <ol class="seen" aria-label="What you see">
+      <li>
+        <span class="n" aria-hidden="true">1</span>
+        <h2 class="h3">A real agent gets hijacked</h2>
+        <p>A real LLM agent (gpt-4o-mini) reads a feed page, staged by us, that hides an order to pay an attacker 5 USDC. It obeys and signs with its own key.</p>
+      </li>
+      <li>
+        <span class="n" aria-hidden="true">2</span>
+        <h2 class="h3">Stellar says no: FAILED</h2>
+        <p><code>Error(Contract, #10)</code> PayeeNotAllowed, from the agent account's <code>__check_auth</code>. The same order fired live from the app is rejected again.</p>
+      </li>
+      <li>
+        <span class="n" aria-hidden="true">3</span>
+        <h2 class="h3">A legitimate purchase</h2>
+        <p>An allowed payee this time: HTTP 402, 0.01 USDC paid over x402, SUCCESS on testnet. Then the owner panel and the catalog.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="after-card">
+    <p class="small vp-note">No voiceover, English captions on screen. The FAILED transactions in the video were sent to the network on purpose; on the normal x402 path a refused payment stops at simulation. <span data-ev-injection hidden>The official LLM run on stellar.expert: <a href="/docs#evidence-on-testnet" target="_blank" rel="noopener">tx</a>.</span></p>
+    <div class="ctas">
+      <a class="btn outline" href="/media/demo.mp4" download>Download the MP4 (10 MB)</a>
+      <a class="btn ghost" href="/#proof">Every transaction, with its hash</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-brand"><strong translate="no">Passport Pay</strong><span>HackMeridian 2026 · MIT · Stellar testnet only, no real money</span></div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/app">Live demo</a>
+      <a href="/video">Demo video</a>
+      <a href="/presentacion">Deck</a>
+      <a href="/docs">Docs</a>
+      <a href="https://github.com/LucasCariddi/passport-pay" target="_blank" rel="noopener">Code</a>
+    </nav>
+  </div>
+</footer>
+<script src="/evidence.js"></script>
+<script>
+  // The official LLM run comes from site/evidence.js (one source for every page); no run, no link.
+  (function () {
+    try {
+      var ev = window.PP_EVIDENCE, inj = ev && ev.injection;
+      if (!inj || !/^[0-9a-f]{64}$/.test(inj.tx)) return;
+      var el = document.querySelector("[data-ev-injection]"), a = el.querySelector("a");
+      a.href = ev.explorer + "/tx/" + inj.tx;
+      a.textContent = "tx " + inj.tx.slice(0, 8) + "…" + inj.tx.slice(-4);
+      el.hidden = false;
+    } catch (e) {}
+  })();
+</script>
+</body>
+</html>

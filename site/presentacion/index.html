@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Passport Pay · Pitch deck</title>
+<meta name="description" content="Passport Pay pitch deck for HackMeridian 2026 (Genesis, Stellar Unlocked + Composed): AI agents pay for APIs over x402 on Stellar, and the spending rules live in the agent's own smart account." />
+<meta name="theme-color" content="#0F0F0F" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='5' y='3' width='22' height='26' rx='3' fill='%2312372A'/%3E%3Ccircle cx='16' cy='13' r='5' fill='none' stroke='%23E6D3A3' stroke-width='1.6'/%3E%3Cpath d='M11 13h10M16 8c2 2 2 8 0 10M16 8c-2 2-2 8 0 10' fill='none' stroke='%23E6D3A3' stroke-width='1.2'/%3E%3Cpath d='M10 23h12' stroke='%23E6D3A3' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Inter+Tight:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<script src="/evidence.js"></script>
+<style>
+  /* HackMeridian 2026 official template (design/hackmeridian-template): 1920 x 1080 stage,
+     same geometry as template.pptx (1 px = 9525 EMU). Only the guidance text is ours. */
+  :root {
+    --black: #0F0F0F; --yellow: #FDDA24; --paper: #F7F6F2; --rule: #DFDDD6; --text: #2A2A2A; --text-2: #5C5C5C;
+    --stamp: #C23A1A;
+    --head: "Inter Tight", "Instrument Sans", system-ui, sans-serif;
+    --body: "Instrument Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #050505; overflow: hidden; font-family: var(--body); color: var(--black); -webkit-font-smoothing: antialiased; }
+  body { touch-action: manipulation; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+
+  #viewport { position: fixed; inset: 0; }
+  #stage { width: 1920px; height: 1080px; position: absolute; left: 50%; top: 50%; transform-origin: center center; overflow: hidden; background: var(--paper); }
+  .slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity 0.35s ease; background: var(--paper); }
+  .slide.active { opacity: 1; visibility: visible; }
+  .slide.cover { background: var(--black); }
+  .deco { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
+  .abs { position: absolute; }
+
+  /* template chrome */
+  .topbar { left: 0; top: 0; width: 1920px; height: 77px; background: var(--black); }
+  .tb { top: 21px; height: 35px; line-height: 35px; font: 700 18.67px/35px var(--mono); color: #FFFFFF; white-space: nowrap; }
+  .tb.l { left: 96px; width: 480px; color: var(--yellow); }
+  .tb.c { left: 576px; width: 768px; text-align: center; }
+  .tb.r { left: 1344px; width: 480px; text-align: right; }
+  .step-pill { left: 96px; top: 149px; width: 278px; height: 50px; border-radius: 25px; background: var(--yellow); font: 700 16px/50px var(--mono); text-align: center; color: var(--black); }
+  .title { left: 96px; top: 221px; width: 1728px; height: 144px; font: 700 133.33px/144px var(--head); text-transform: uppercase; color: var(--black); letter-spacing: -0.01em; white-space: nowrap; }
+  .content { left: 96px; top: 405px; width: 1180px; height: 500px; display: flex; flex-direction: column; }
+  .lead { font: 700 37.33px/1.22 var(--body); color: var(--black); }
+  .bullets { list-style: none; margin-top: 22px; display: flex; flex-direction: column; gap: 12px; }
+  .bullets li { position: relative; padding-left: 46px; font: 400 29.33px/1.34 var(--body); color: var(--text); }
+  .bullets li::before { content: ""; position: absolute; left: 4px; top: 0.42em; border-style: solid; border-width: 10px 0 10px 17px; border-color: transparent transparent transparent var(--black); }
+  .bullets b { font-weight: 700; color: var(--black); }
+  .think { margin-top: auto; min-height: 104px; border: 4px solid var(--yellow); border-radius: 24px; background: #FFFFFF; padding: 18px 38px; display: flex; align-items: center; font: 400 30px/1.3 var(--body); color: var(--black); }
+  .think b { font-weight: 700; margin-right: 0.3em; white-space: nowrap; }
+  .src { margin-top: 14px; margin-bottom: 16px; font: 400 18px/1.4 var(--mono); color: var(--text-2); }
+  .rule { left: 96px; top: 936px; width: 1728px; height: 1px; background: var(--rule); }
+  .foot { left: 96px; top: 972px; width: 960px; height: 34px; font: 400 16px/34px var(--mono); color: var(--text-2); white-space: pre; }
+  .hm-logo { left: 1560px; top: 963px; width: 264px; height: 46px; }
+  code, .code { font-family: var(--mono); font-size: 0.86em; }
+  .ph { background: var(--yellow); color: var(--black); padding: 0 0.25em; border-radius: 6px; font-weight: 700; }
+
+  /* cover */
+  .cover .tb { top: 82px; height: 34px; line-height: 34px; }
+  .cover .tb.l { color: #FFFFFF; left: 96px; width: 864px; }
+  .cover .tb.r { color: var(--yellow); left: 1056px; width: 768px; text-align: right; }
+  .cover-pill { left: 96px; top: 168px; width: 346px; height: 50px; border: 2px solid var(--yellow); border-radius: 25px; font: 700 16px/46px var(--mono); color: var(--yellow); text-align: center; }
+  .cover-title { left: 96px; top: 252px; width: 1180px; font: 700 170.67px/0.92 var(--head); color: var(--yellow); text-transform: uppercase; letter-spacing: -0.01em; }
+  .cover-sub { left: 96px; top: 588px; width: 1180px; font: 700 40px/1.2 var(--head); color: #FFFFFF; }
+  .cover-mono { left: 96px; top: 652px; width: 1180px; font: 400 20px/1.4 var(--mono); color: #A7A7A7; }
+  .cover-logos { left: 96px; top: 710px; height: 96px; display: flex; align-items: center; }
+  .cover-logos .sep { width: 2px; height: 96px; background: #5C5C5C; margin: 0 36px 0 37px; }
+  .cover .rule { top: 907px; background: #3A3A3A; }
+  .cover .cf { top: 941px; height: 38px; font: 700 21.33px/38px var(--mono); color: #FFFFFF; white-space: nowrap; }
+  .cover .cf.c { left: 672px; width: 576px; text-align: center; color: var(--yellow); font-size: 18.67px; }
+  .cover .cf.r { left: 1248px; width: 576px; text-align: right; color: #A7A7A7; font-weight: 400; font-size: 18.67px; }
+
+  /* right-hand visuals (Passport Pay identity, only inside this area) */
+  .vframe { left: 1290px; top: 128px; width: 534px; height: 300px; border-radius: 14px; overflow: hidden; background: var(--black); border: 3px solid var(--black); }
+  .vframe video, .vframe img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vplay { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(15,15,15,0.35); border: 0; cursor: pointer; }
+  .vframe.paused .vplay { display: flex; }
+  .vplay span { width: 84px; height: 84px; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; }
+  .vcap { left: 1478px; top: 440px; width: 346px; font: 400 16px/1.35 var(--mono); color: var(--text-2); text-align: right; }
+  .vbadge { position: absolute; left: 12px; top: 12px; background: var(--yellow); color: var(--black); font: 700 13px/1 var(--mono); letter-spacing: 0.08em; padding: 7px 11px; border-radius: 999px; pointer-events: none; }
+  .stamp { width: 236px; height: 236px; border-radius: 50%; border: 6px solid var(--stamp); color: var(--stamp); background: rgba(247, 246, 242, 0.94); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; transform: rotate(-13deg); text-align: center; text-decoration: none; }
+  .stamp .s-micro { font: 700 12px/1 var(--mono); letter-spacing: 0.2em; }
+  .stamp .s-word { font: 800 42px/1 var(--head); letter-spacing: 0.01em; }
+  .stamp .s-err { font: 700 15px/1.1 var(--mono); }
+  .stamp .s-tx { font: 400 13px/1.1 var(--mono); text-decoration: underline; text-underline-offset: 2px; }
+  .s2-stamp { left: 1222px; top: 352px; }
+  .flow { left: 1354px; top: 404px; width: 470px; display: flex; flex-direction: column; gap: 0; }
+  .fbox { border: 3px solid var(--black); border-radius: 14px; background: #FFFFFF; padding: 12px 18px; }
+  .fbox.key { background: var(--black); color: var(--yellow); }
+  .fbox b { display: block; font: 700 25px/1.15 var(--head); }
+  .fbox span { display: block; font: 400 15px/1.3 var(--mono); color: var(--text-2); margin-top: 4px; }
+  .fbox.key span { color: #E8E3C8; }
+  .farrow { height: 24px; display: flex; justify-content: center; }
+  .farrow::before { content: ""; border-style: solid; border-width: 14px 11px 0 11px; border-color: var(--black) transparent transparent transparent; margin-top: 5px; }
+  .team-lines li:first-child b { font-size: 1.05em; }
+  /* team photo: same circle as the template's initials placeholder, with its yellow ring */
+  .avatar { left: 1450px; top: 374px; width: 278px; height: 278px; border-radius: 50%; border: 8px solid var(--yellow); background: var(--yellow); object-fit: cover; object-position: 50% 40%; display: block; }
+  .links { margin-top: 2px; font: 400 19px/1.3 var(--mono); color: var(--black); }
+
+  /* controls */
+  #ui { position: fixed; right: 18px; bottom: 18px; display: flex; gap: 8px; align-items: center; z-index: 10; transition: opacity 0.3s; }
+  #ui.hide { opacity: 0; }
+  #ui.hide:focus-within { opacity: 1; }
+  .cb { background: rgba(15,15,15,0.86); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; height: 44px; min-width: 44px; padding: 0 14px; font: 600 14px var(--body); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+  .cb:hover { background: #2A2A2A; border-color: var(--yellow); }
+  .cb svg { width: 18px; height: 18px; flex: none; }
+  #count { color: #FFFFFF; font: 700 14px var(--mono); padding: 0 6px; font-variant-numeric: tabular-nums; background: rgba(15,15,15,0.86); border-radius: 999px; height: 44px; display: inline-flex; align-items: center; }
+  #bar { position: fixed; left: 0; top: 0; height: 4px; background: var(--yellow); transition: width 0.3s; z-index: 10; }
+  #notes { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(15,15,15,0.97); color: #FFFFFF; padding: 20px 28px 84px; transform: translateY(100%); transition: transform 0.3s; z-index: 9; border-top: 2px solid var(--yellow); max-height: 48vh; overflow: auto; overscroll-behavior: contain; visibility: hidden; }
+  #notes.open { transform: none; visibility: visible; }
+  #notes .meta { display: flex; justify-content: space-between; gap: 12px; color: var(--yellow); font: 700 13px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; }
+  #ntext p { font-size: 19px; line-height: 1.55; margin-top: 10px; max-width: 1100px; }
+  #ntext p.cue { color: #BDBDBD; font-size: 16px; }
+  #menu { position: fixed; right: 18px; bottom: 72px; background: #FFFFFF; border-radius: 14px; padding: 8px; display: none; z-index: 11; box-shadow: 0 20px 50px rgba(0,0,0,0.45); }
+  #menu.open { display: block; }
+  #menu a { display: block; padding: 11px 14px; color: var(--black); text-decoration: none; font-weight: 600; font-size: 14px; border-radius: 8px; }
+  #menu a:hover, #menu a:focus-visible { background: #FFF6C2; outline-offset: -2px; }
+  #help { position: fixed; left: 18px; bottom: 22px; color: rgba(255,255,255,0.55); font: 400 13px var(--mono); z-index: 10; transition: opacity 0.3s; }
+  #phone { position: fixed; inset: 0; background: rgba(5,5,5,0.78); display: none; place-items: center; z-index: 20; overscroll-behavior: contain; }
+  #phone.open { display: grid; }
+  .pbox { background: #FFFFFF; border-radius: 22px; padding: 30px 32px; width: min(420px, 92vw); text-align: center; position: relative; color: var(--black); border: 4px solid var(--yellow); }
+  .pbox h2 { font: 700 22px/1.2 var(--head); }
+  .pbox p { font-size: 15px; color: #3A3A3A; margin-top: 8px; line-height: 1.45; }
+  #pqr { width: 230px; height: 230px; margin: 18px auto 6px; }
+  #pqr img, #pqr canvas { width: 230px !important; height: 230px !important; }
+  .pcode b { font-family: var(--mono); letter-spacing: 0.2em; font-size: 20px; }
+  #plink { display: block; font-size: 13px; color: #0F0F0F; margin-top: 6px; word-break: break-all; }
+  .pbtn { margin-top: 16px; background: var(--black); color: #FFFFFF; border: 0; border-radius: 999px; min-height: 48px; padding: 0 20px; font: 700 15px var(--body); cursor: pointer; width: 100%; }
+  .pbtn:hover { background: #2A2A2A; }
+  .psmall { font-size: 12px !important; color: #5C5C5C !important; }
+  .px { position: absolute; right: 12px; top: 12px; background: #F2F0E8; border: 0; border-radius: 50%; width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer; }
+  .px svg { width: 18px; height: 18px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  body.embed #ui, body.embed #help, body.embed #bar, body.embed #notes, body.embed #menu { display: none !important; }
+  body.embed .slide { transition: none; }
+  @media (prefers-reduced-motion: reduce) { .slide, #notes, #bar, #ui { transition: none; } }
+  @media (max-width: 700px) { #help { display: none; } #ui .lbl { display: none; } #ui { left: 8px; right: 8px; bottom: 12px; gap: 6px; justify-content: center; } .cb { min-width: 44px; padding: 0 10px; } }
+</style>
+</head>
+<body>
+<div id="bar" aria-hidden="true"></div>
+<main id="viewport" aria-label="Pitch deck">
+<div id="stage">
+
+<!-- 1 · Cover -->
+<section class="slide cover" data-title="Cover" data-time="0:00" data-dur="15" aria-label="Slide 1 of 5: Cover">
+  <svg class="deco" viewBox="0 0 1920 1080" aria-hidden="true">
+    <path d="M1306 221v115.8l259.2 184.7 259.2-184.7V221L1565.2 378.2z" fill="#FDDA24" fill-opacity="0.22" />
+    <path d="M1306 435.9V623.4l151.7-96.5z" fill="#FDDA24" fill-opacity="0.22" />
+    <path d="M1824 435.9V623.4l-151.7-96.5z" fill="#FDDA24" fill-opacity="0.22" />
+    <path d="M1565 720v77l77-38.5z" fill="#FDDA24" />
+    <path d="M1638 720v77l77-38.5z" fill="#FDDA24" fill-opacity="0.6" />
+    <path d="M1711 720v77l77-38.5z" fill="#FDDA24" fill-opacity="0.3" />
+  </svg>
+  <p class="abs tb l">HACKMERIDIAN 2026 · LISBON</p>
+  <p class="abs tb r">PLATFORM 01 / 05</p>
+  <p class="abs cover-pill">PITCH DECK · MADE TO MOVE</p>
+  <h1 class="abs cover-title">Passport<br />Pay</h1>
+  <p class="abs cover-sub">Give your agent money. Not the power to drain it.</p>
+  <p class="abs cover-mono">Genesis · Stellar Unlocked + Composed · passport-pay-stellar.vercel.app</p>
+  <div class="abs cover-logos">
+    <img src="/presentacion/assets/hackmeridian-white.png" alt="HackMeridian 2026 Lisbon" width="496" height="86" />
+    <span class="sep" aria-hidden="true"></span>
+    <img src="/presentacion/assets/guava-white.png" alt="Guava" width="227" height="54" style="margin-top: 0" />
+    <img src="/presentacion/assets/stellar-white.png" alt="Stellar" width="261" height="65" style="margin-left: 32px" />
+  </div>
+  <div class="abs rule" aria-hidden="true"></div>
+  <p class="abs cf" style="left: 96px; width: 480px">October 2026</p>
+  <p class="abs cf c">#HackMeridian26</p>
+  <p class="abs cf r">© 2026 HackMeridian · Lisbon</p>
+  <aside class="note" hidden>
+    <p>Hi, this is Passport Pay. AI agents are starting to spend real money, and today the only thing standing between a hijacked agent and your wallet is hope.</p>
+    <p>We fixed that on Stellar.</p>
+    <p class="cue">Cue: say it and click. 15 seconds.</p>
+  </aside>
+</section>
+
+<!-- 2 · The Solution -->
+<section class="slide" data-title="The Solution" data-time="0:15" data-dur="30" data-video="1" aria-label="Slide 2 of 5: The Solution">
+  <svg class="deco" viewBox="0 0 1920 1080" aria-hidden="true">
+    <path d="M1354 422v105l235 167.6 235-167.6V422L1589 564.6z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1354 617.6V787.8l137.6-87.3z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1824 617.6V787.8l-137.6-87.3z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1589 787v53l53-26.5z" fill="#FDDA24" />
+    <path d="M1639 787v53l53-26.5z" fill="#FDDA24" fill-opacity="0.6" />
+    <path d="M1689 787v53l53-26.5z" fill="#FDDA24" fill-opacity="0.3" />
+  </svg>
+  <div class="abs topbar" aria-hidden="true"></div>
+  <p class="abs tb l">PLATFORM 02 / 05</p>
+  <p class="abs tb c">HACKMERIDIAN 2026 · LISBON</p>
+  <p class="abs tb r">NEXT ▸ PMF</p>
+  <p class="abs step-pill">PITCH STEP 01 / 04</p>
+  <h2 class="abs title">The Solution</h2>
+  <div class="abs content" style="width: 1110px">
+    <p class="lead">The spending rules live in the agent's own smart account, not in the agent.</p>
+    <ul class="bullets">
+      <li>Agents pay for APIs over x402 in USDC, each with a ZK passport credential: one per agent, anti-Sybil by nullifier.</li>
+      <li>Every payment passes the account's checks: allowed payee, cap per period, not revoked.</li>
+      <li>A prompt-injected agent can sign anything. The network still refuses it.</li>
+    </ul>
+    <p class="think"><span><b>Why it's the best fix:</b>it works even when the agent itself is compromised.</span></p>
+  </div>
+  <div class="abs vframe" id="vframe">
+    <video id="demo" src="/media/demo.mp4" poster="/media/demo-poster.png" muted playsinline loop preload="metadata" data-start="57" aria-label="Recorded demo on Stellar testnet: the agent pays, then tries to go over its cap and the account contract rejects it"></video>
+    <button class="vplay" id="vplay" type="button" aria-label="Play the demo video"><span><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#0F0F0F"/></svg></span></button>
+    <span class="vbadge">TESTNET · REAL RECORDING</span>
+  </div>
+  <p class="abs vcap" id="vcap">Muted. Full run in the menu.</p>
+  <a class="abs stamp s2-stamp" id="s2stamp" href="#" target="_blank" rel="noopener">
+    <span class="s-micro">STELLAR TESTNET</span>
+    <span class="s-word">REJECTED</span>
+    <span class="s-err" id="s2err">CapExceeded #6</span>
+    <span class="s-tx" id="s2tx">tx</span>
+  </a>
+  <div class="abs rule" aria-hidden="true"></div>
+  <p class="abs foot">© 2026 HackMeridian · Lisbon  ·  #HackMeridian26</p>
+  <img class="abs hm-logo" src="/presentacion/assets/hackmeridian-dark.png" alt="HackMeridian 2026 Lisbon" width="264" height="46" />
+  <aside class="note" hidden>
+    <p>Picture an agent that reads a page with a hidden instruction to pay an attacker. A hijacked agent obeys and signs. Stellar still refuses, because the rules are enforced by the agent's own contract account. The stamp is a real refusal on testnet.</p>
+    <p>x402 says how an agent pays. Passport Pay decides who can pay, whom, and how much, without trusting anyone.</p>
+    <p class="cue">Cue: point at the stamp. The real LLM injection run is not recorded yet: say "picture", not "here's our agent".</p>
+  </aside>
+  <aside class="note" data-when="injection" hidden>
+    <p>Here's our real agent, a GPT-4o mini model. It read a data feed we rigged with a hidden order to pay an attacker. It obeyed and signed. Stellar rejected it, because the rules are enforced by the agent's own contract account.</p>
+    <p>x402 says how an agent pays. Passport Pay decides who can pay, whom, and how much, without trusting anyone.</p>
+    <p class="cue">Cue: point at the stamp: the real transaction of the LLM agent run (gpt-4o-mini, 26 Oct, testnet). Only the feed page is staged; the model's decision, the signature and the rejection are real.</p>
+  </aside>
+</section>
+
+<!-- 3 · PMF -->
+<section class="slide" data-title="PMF" data-time="0:45" data-dur="25" aria-label="Slide 3 of 5: PMF">
+  <svg class="deco" viewBox="0 0 1920 1080" aria-hidden="true">
+    <path d="M1354 422v105l235 167.6 235-167.6V422L1589 564.6z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1354 617.6V787.8l137.6-87.3z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1824 617.6V787.8l-137.6-87.3z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1589 787v53l53-26.5z" fill="#FDDA24" />
+    <path d="M1639 787v53l53-26.5z" fill="#FDDA24" fill-opacity="0.6" />
+    <path d="M1689 787v53l53-26.5z" fill="#FDDA24" fill-opacity="0.3" />
+  </svg>
+  <div class="abs topbar" aria-hidden="true"></div>
+  <p class="abs tb l">PLATFORM 03 / 05</p>
+  <p class="abs tb c">HACKMERIDIAN 2026 · LISBON</p>
+  <p class="abs tb r">NEXT ▸ TECHNICAL WORKFLOW</p>
+  <p class="abs step-pill">PITCH STEP 02 / 04</p>
+  <h2 class="abs title">PMF</h2>
+  <div class="abs content">
+    <p class="lead">Agents with wallets are shipping now, and prompt injection is the top risk for them.</p>
+    <ul class="bullets">
+      <li><b>Owners:</b> today you either babysit every payment or trust a cap that a hijacked agent bypasses.</li>
+      <li><b>Sellers:</b> APIs can't open free tiers or sell to agents without bot farms eating them.</li>
+      <li><b>Ecosystem:</b> x402 and MPP are live on Stellar; what's missing is bounded authority for agents.</li>
+    </ul>
+    <p class="src">Top risk: OWASP Top 10 for LLM Applications 2025, LLM01 Prompt Injection.</p>
+    <p class="think"><span><b>Why care:</b>one injected page is enough to drain an agent's wallet. Ours lost zero.</span></p>
+  </div>
+  <div class="abs rule" aria-hidden="true"></div>
+  <p class="abs foot">© 2026 HackMeridian · Lisbon  ·  #HackMeridian26</p>
+  <img class="abs hm-logo" src="/presentacion/assets/hackmeridian-dark.png" alt="HackMeridian 2026 Lisbon" width="264" height="46" />
+  <aside class="note" hidden>
+    <p>Every team building agents that pay hits the same wall: you can't hand an agent a budget without handing it the keys. And sellers can't trust who's on the other side.</p>
+    <p>Passport Pay gives owners a hard limit and sellers a payer that brings its own controls.</p>
+    <p class="cue">Cue: no market numbers. "Top risk" is OWASP LLM01, cited on the slide. "Ours lost zero": the attacker's balance after the scripted payee run.</p>
+  </aside>
+</section>
+
+<!-- 4 · Technical Workflow -->
+<section class="slide" data-title="Technical Workflow" data-time="1:10" data-dur="35" aria-label="Slide 4 of 5: Technical Workflow">
+  <svg class="deco" viewBox="0 0 1920 1080" aria-hidden="true">
+    <path d="M1354 422v105l235 167.6 235-167.6V422L1589 564.6z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1354 617.6V787.8l137.6-87.3z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1824 617.6V787.8l-137.6-87.3z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1589 838v53l53-26.5z" fill="#FDDA24" />
+    <path d="M1639 838v53l53-26.5z" fill="#FDDA24" fill-opacity="0.6" />
+    <path d="M1689 838v53l53-26.5z" fill="#FDDA24" fill-opacity="0.3" />
+  </svg>
+  <div class="abs topbar" aria-hidden="true"></div>
+  <p class="abs tb l">PLATFORM 04 / 05</p>
+  <p class="abs tb c">HACKMERIDIAN 2026 · LISBON</p>
+  <p class="abs tb r">NEXT ▸ THE TEAM</p>
+  <p class="abs step-pill">PITCH STEP 03 / 04</p>
+  <h2 class="abs title">Technical Workflow</h2>
+  <div class="abs content" style="width: 1200px">
+    <p class="lead">Prove. Bind. Enforce. With the official x402 facilitator, unchanged.</p>
+    <ul class="bullets">
+      <li><b>Prove:</b> a Groth16 ZK passport made on the client in about 2 s, verified on BN254 in Soroban.</li>
+      <li><b>Bind:</b> PassportFactory verifies the proof and deploys the agent's smart account in one tx.</li>
+      <li><b>Enforce:</b> <code>PassportAccount.__check_auth</code> checks passport, payee, cap and revocation on every USDC transfer; the ledger rejects anything else (real FAILED txs on testnet).</li>
+    </ul>
+    <p class="think"><span><b>Why it will succeed:</b>it's live on testnet today, with 62 contract tests and a public demo anyone can try.</span></p>
+  </div>
+  <div class="abs flow" aria-label="Payment flow">
+    <div class="fbox"><b>Owner</b><span>ZK proof in the browser</span></div>
+    <div class="farrow" aria-hidden="true"></div>
+    <div class="fbox"><b>PassportFactory</b><span>verify + deploy, one tx</span></div>
+    <div class="farrow" aria-hidden="true"></div>
+    <div class="fbox key"><b>Agent account</b><span>__check_auth: passport · payee · cap · revoked</span></div>
+    <div class="farrow" aria-hidden="true"></div>
+    <div class="fbox"><b>x402 API</b><span>official facilitator settles USDC</span></div>
+  </div>
+  <div class="abs rule" aria-hidden="true"></div>
+  <p class="abs foot">© 2026 HackMeridian · Lisbon  ·  #HackMeridian26</p>
+  <img class="abs hm-logo" src="/presentacion/assets/hackmeridian-dark.png" alt="HackMeridian 2026 Lisbon" width="264" height="46" />
+  <aside class="note" hidden>
+    <p>Three steps. Prove, bind, enforce. The key is that enforcement runs inside __check_auth, so the official facilitator rejects at simulation and the ledger rejects if anyone skips it.</p>
+    <p>Prior work is declared: the ZK passport comes from open-stellar-passport, and Open Stellar had the marketplace with checks in the backend. Here we moved them onchain.</p>
+    <p class="cue">Cue: 62 contract tests is today's cargo test count (51 account, 11 factory).</p>
+  </aside>
+</section>
+
+<!-- 5 · The Team -->
+<section class="slide" data-title="The Team" data-time="1:45" data-dur="20" aria-label="Slide 5 of 5: The Team">
+  <svg class="deco" viewBox="0 0 1920 1080" aria-hidden="true">
+    <path d="M1354 422v105l235 167.6 235-167.6V422L1589 564.6z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1354 617.6V787.8l137.6-87.3z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1824 617.6V787.8l-137.6-87.3z" fill="#0F0F0F" fill-opacity="0.07" />
+    <path d="M1589 787v53l53-26.5z" fill="#FDDA24" />
+    <path d="M1639 787v53l53-26.5z" fill="#FDDA24" fill-opacity="0.6" />
+    <path d="M1689 787v53l53-26.5z" fill="#FDDA24" fill-opacity="0.3" />
+  </svg>
+  <div class="abs topbar" aria-hidden="true"></div>
+  <p class="abs tb l">PLATFORM 05 / 05</p>
+  <p class="abs tb c">HACKMERIDIAN 2026 · LISBON</p>
+  <p class="abs tb r">FINAL STOP</p>
+  <p class="abs step-pill">PITCH STEP 04 / 04</p>
+  <h2 class="abs title">The Team</h2>
+  <div class="abs content" style="height: 505px">
+    <p class="lead">Rooted in the Stellar community in Buenos Aires.</p>
+    <ul class="bullets team-lines">
+      <li><b>Lucas Cariddi · Marketing and growth</b></li>
+      <li>Stellar Ambassador in Buenos Aires, co-organizer of Stellar community events.</li>
+      <li>Background in crypto and AI (Compoze Labs, Bitget). Studied at UTN FRBA.</li>
+    </ul>
+    <p class="src">Engineering on the shoulders of Bitcoindefi's open-stellar-passport and Open Stellar.</p>
+    <p class="links">passport-pay-stellar.vercel.app · github.com/LucasCariddi/passport-pay</p>
+    <p class="think"><span><b>Why us:</b>we live in the Stellar community and we've seen agents with wallets fail; this is the missing piece.</span></p>
+  </div>
+  <img class="abs avatar" src="/media/team-lucas.jpg" alt="Lucas Cariddi" width="278" height="278" decoding="async" />
+  <div class="abs rule" aria-hidden="true"></div>
+  <p class="abs foot">© 2026 HackMeridian · Lisbon  ·  #HackMeridian26</p>
+  <img class="abs hm-logo" src="/presentacion/assets/hackmeridian-dark.png" alt="HackMeridian 2026 Lisbon" width="264" height="46" />
+  <aside class="note" hidden>
+    <p>I'm Lucas, I run marketing and growth, and I'm a Stellar Ambassador in Buenos Aires. We built this because every agent team we talk to hits the same wall.</p>
+    <p>Try it yourself: the link is on screen. Thanks.</p>
+    <p class="cue">Cue: end on the link.</p>
+  </aside>
+</section>
+
+</div>
+</main>
+
+<div id="notes" role="region" aria-label="Speaker notes"><div class="meta"><span id="nslide">Slide 1</span><span id="ntimer">00:00</span></div><div id="ntext"></div></div>
+<div id="menu" role="menu" aria-label="Downloads and links">
+  <a role="menuitem" href="/notas" target="passport-pay-notas">Open the speaker view (/notas)</a>
+  <a role="menuitem" href="/media/passport-pay.pptx" download>Download the deck (.pptx)</a>
+  <a role="menuitem" href="/media/passport-pay.pdf" download>Download the deck (.pdf)</a>
+  <a role="menuitem" href="/media/demo.mp4" download>Download the demo video (.mp4)</a>
+  <a role="menuitem" href="/app" target="_blank" rel="noopener">Open the web app</a>
+  <a role="menuitem" href="/" target="_blank" rel="noopener">Open the landing page</a>
+</div>
+<div id="phone" role="dialog" aria-modal="true" aria-labelledby="ptitle" hidden>
+  <div class="pbox">
+    <button class="px" id="pclose" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#0F0F0F" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <h2 id="ptitle">Speaker notes on another screen</h2>
+    <p>Scan with your phone: the notes follow the slides, and you can move the slides from the phone too.</p>
+    <div id="pqr"></div>
+    <p class="pcode">Room <b id="pcode">------</b></p>
+    <a id="plink" href="/notas" target="_blank" rel="noopener"></a>
+    <button id="popen" class="pbtn" type="button">Open the notes on this computer</button>
+    <p class="psmall" id="pwarn">The room code is private and changes every time you present. Only the slide number is shared.</p>
+  </div>
+</div>
+<p id="help">← → to move · F full screen · N speaker notes</p>
+<div id="ui">
+  <button class="cb" id="prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <span id="count" aria-live="polite">1 / 5</span>
+  <button class="cb" id="next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button class="cb" id="bnotes" type="button" aria-label="Speaker notes" aria-expanded="false" aria-controls="notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v10H9l-4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 9h7M8.5 12h4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl">Notes</span></button>
+  <button class="cb" id="bphone" type="button" aria-label="Speaker notes on another screen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl">Notes on phone</span></button>
+  <button class="cb" id="bfull" type="button" aria-label="Full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button class="cb" id="bmenu" type="button" aria-label="Downloads and links" aria-haspopup="menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+
+<script>
+  const EV = window.PP_EVIDENCE || {};
+  const slides = [...document.querySelectorAll(".slide")];
+  const stage = document.getElementById("stage");
+  const video = document.getElementById("demo");
+  const vframe = document.getElementById("vframe");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let i = 0, t0 = null, timerId = null;
+  const $ = (id) => document.getElementById(id);
+  const shortHash = (h) => `${h.slice(0, 8)}…${h.slice(-4)}`;
+
+  /* ---- evidence on slide 2: the injection run when it exists, else the real CapExceeded tx ---- */
+  (function stamp() {
+    const e = EV.injection || EV.capExceeded;
+    const a = $("s2stamp");
+    if (!e) { a.hidden = true; return; }
+    a.href = `${EV.explorer || "https://stellar.expert/explorer/testnet"}/tx/${e.tx}`;
+    $("s2err").textContent = `${e.error} #${e.code}`;
+    $("s2tx").textContent = `tx ${shortHash(e.tx)}`;
+    a.setAttribute("aria-label", `Rejected on Stellar testnet: ${e.error}, error ${e.code}. Transaction ${shortHash(e.tx)} on stellar.expert`);
+  })();
+  // speaker script per slide: the injection variant only once that run is real
+  function noteOf(s) {
+    const inj = s.querySelector('aside.note[data-when="injection"]');
+    return (EV.injection && inj) || s.querySelector("aside.note:not([data-when])");
+  }
+
+  /* ---- sync with /notas ----
+     same computer: BroadcastChannel between tabs.
+     another device: private room on ntfy.sh (only the slide number travels). */
+  const params = new URLSearchParams(location.search);
+  const EMBED = params.has("embed");
+  if (EMBED) document.body.classList.add("embed");
+  const TOPIC = "passport-pay-pitch-v1-";
+  const NOTES_PATH = "/notas";
+  let sala = params.get("sala") || (() => { try { return sessionStorage.getItem("pp-sala"); } catch (e) { return null; } })();
+  const bc = !EMBED && "BroadcastChannel" in window ? new BroadcastChannel("passport-pay-pitch") : null;
+  let es = null;
+  // each message carries sender id + sequence: the same message arrives by BroadcastChannel and,
+  // later, by ntfy; stale copies must not move the deck backwards
+  const SID = Math.random().toString(36).slice(2);
+  let seq = 0, cause = null;
+  const lastSeq = {};
+  function fresh(m) {
+    if (!m.sid || !Number.isInteger(m.seq)) return true;
+    if ((lastSeq[m.sid] || 0) >= m.seq) return false;
+    lastSeq[m.sid] = m.seq; return true;
+  }
+  // ntfy.sh rate-limits by IP (HTTP 429): one message at a time, keep only the latest pending
+  // one, retry it a few times. The daily quota per IP (code 42908) does not come back until the
+  // next day: stop there and say so.
+  let nPending = null, nBusy = false, nQuota = false;
+  function ntfyPub(msg) {
+    if (!sala || nQuota) return;
+    nPending = msg;
+    if (!nBusy) ntfyFlush();
+  }
+  async function ntfyFlush() {
+    nBusy = true;
+    let tries = 0;
+    while (nPending) {
+      const m = nPending; nPending = null;
+      let ok = false;
+      try {
+        const r = await fetch(`https://ntfy.sh/${TOPIC}${sala}`, { method: "POST", body: JSON.stringify(m) });
+        ok = r.ok;
+        if (r.status === 429 && (await r.json().catch(() => ({}))).code === 42908) { nQuota = true; nPending = null; $("pwarn").textContent = "ntfy.sh hit its daily limit on this network, so the phone no longer gets the slides. Try another network, or open the notes on this computer."; break; }
+      } catch (e) {}
+      if (ok) { tries = 0; continue; }
+      if (++tries > 8) { tries = 0; continue; }
+      if (!nPending) nPending = m;
+      await new Promise((r) => setTimeout(r, 2500));
+    }
+    nBusy = false;
+  }
+  function broadcast() {
+    if (EMBED) return;
+    // ack: which notes command caused this move, so that screen can skip echoes of older commands
+    const msg = { from: "deck", type: "slide", n: i, total: slides.length, sid: SID, seq: ++seq, ack: cause };
+    bc?.postMessage(msg);
+    try { localStorage.setItem("pp-slide", String(i)); } catch (e) {}
+    ntfyPub(msg);
+  }
+  function onRemote(m) {
+    if (!m || m.from !== "notes" || !fresh(m)) return;
+    if (m.type === "goto" && Number.isInteger(m.n) && m.n !== i) { cause = m.sid ? { sid: m.sid, seq: m.seq } : null; show(m.n); cause = null; }
+    if (m.type === "hello") broadcast();
+  }
+  if (bc) bc.onmessage = (e) => onRemote(e.data);
+  function subscribe() {
+    if (!sala || es || EMBED) return;
+    es = new EventSource(`https://ntfy.sh/${TOPIC}${sala}/sse`);
+    es.onmessage = (e) => {
+      try { const d = JSON.parse(e.data); if (d.event === "message") onRemote(JSON.parse(d.message)); } catch (err) {}
+    };
+  }
+  subscribe();
+  // embedded preview: the parent (/notas) says which slide to show
+  if (EMBED) window.addEventListener("message", (e) => { if (e.origin === location.origin && e.data?.type === "goto") show(e.data.n, false); });
+
+  /* ---- video (slide 2): muted autoplay loop, never under reduced motion ---- */
+  if (!EMBED) { try { video.preload = "auto"; } catch (e) {} }
+  video.addEventListener("error", () => { $("vcap").textContent = "The demo video is not available here. The live demo is at /app."; }, true);
+  const syncPaused = () => vframe.classList.toggle("paused", video.paused);
+  video.addEventListener("play", syncPaused);
+  video.addEventListener("pause", syncPaused);
+  $("vplay").onclick = (e) => { e.stopPropagation(); video.play().catch(() => {}); };
+  video.addEventListener("click", (e) => { e.stopPropagation(); video.paused ? video.play().catch(() => {}) : video.pause(); });
+  syncPaused();
+
+  function fit() {
+    const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = `translate(-50%, -50%) scale(${s})`;
+  }
+  window.addEventListener("resize", fit); fit();
+
+  function renderNote() {
+    const s = slides[i];
+    $("nslide").textContent = `Slide ${i + 1} of ${slides.length} · ${s.dataset.title} · ${s.dataset.time} · ${s.dataset.dur} s`;
+    const n = noteOf(s);
+    $("ntext").innerHTML = n ? n.innerHTML : "";
+  }
+  function show(n, push = true) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => {
+      const on = k === i;
+      s.classList.toggle("active", on);
+      s.toggleAttribute("inert", !on);
+      s.setAttribute("aria-hidden", on ? "false" : "true");
+    });
+    $("count").textContent = `${i + 1} / ${slides.length}`;
+    $("bar").style.width = `${((i + 1) / slides.length) * 100}%`;
+    renderNote();
+    if (slides[i].dataset.video && !EMBED && !reduced) { try { video.currentTime = +video.dataset.start || 0; video.play().catch(() => {}); } catch (e) {} }
+    else { video.pause(); }
+    // ?slide=N only picks the first slide: drop it so a reload keeps the current one (#sN)
+    if (push && !EMBED) { const u = new URL(location.href); u.searchParams.delete("slide"); u.hash = `s${i + 1}`; history.replaceState(null, "", u); }
+    broadcast();
+  }
+  const next = () => show(i + 1), prev = () => show(i - 1);
+  $("next").onclick = next;
+  $("prev").onclick = prev;
+
+  function toggleNotes() {
+    const el = $("notes");
+    const open = el.classList.toggle("open");
+    $("bnotes").setAttribute("aria-expanded", String(open));
+    if (open && !timerId) {
+      t0 = Date.now();
+      timerId = setInterval(() => {
+        const s = Math.floor((Date.now() - t0) / 1000);
+        $("ntimer").textContent = `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
+      }, 500);
+    }
+  }
+  function toggleFull() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  }
+  const menu = $("menu");
+  const setMenu = (open) => { menu.classList.toggle("open", open); $("bmenu").setAttribute("aria-expanded", String(open)); if (open) menu.querySelector("a")?.focus(); };
+  $("bnotes").onclick = toggleNotes;
+  $("bfull").onclick = toggleFull;
+  $("bmenu").onclick = (e) => { e.stopPropagation(); setMenu(!menu.classList.contains("open")); };
+  document.addEventListener("click", (e) => { if (!e.target.closest("#menu") || e.target.closest("#menu a")) setMenu(false); });
+
+  // notes on a phone or another tab: private room + QR
+  function newSala() {
+    const abc = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    const r = crypto.getRandomValues(new Uint8Array(6));
+    return [...r].map((x) => abc[x % abc.length]).join("");
+  }
+  function notesUrl() { return `${location.origin}${NOTES_PATH}?sala=${sala}#s${i + 1}`; }
+  const phone = $("phone");
+  let lastFocus = null;
+  function openPhone() {
+    if (!sala) {
+      sala = newSala();
+      try { sessionStorage.setItem("pp-sala", sala); } catch (e) {}
+      const u = new URL(location.href); u.searchParams.set("sala", sala); history.replaceState(null, "", u);
+      subscribe();
+    }
+    $("pcode").textContent = sala;
+    const link = $("plink");
+    link.href = notesUrl(); link.textContent = `${location.host}${NOTES_PATH}?sala=${sala}`;
+    const box = $("pqr"); box.innerHTML = "";
+    if (window.QRCode) new QRCode(box, { text: notesUrl(), width: 460, height: 460, colorDark: "#0F0F0F", colorLight: "#ffffff" });
+    lastFocus = document.activeElement;
+    phone.hidden = false; phone.classList.add("open");
+    $("popen").focus();
+  }
+  function closePhone() { phone.classList.remove("open"); phone.hidden = true; lastFocus?.focus?.(); }
+  $("bphone").onclick = (e) => { e.stopPropagation(); openPhone(); };
+  $("pclose").onclick = closePhone;
+  phone.addEventListener("click", (e) => { if (e.target === phone) closePhone(); });
+  $("popen").onclick = () => { window.open(notesUrl(), "passport-pay-notas"); closePhone(); };
+
+  document.addEventListener("keydown", (e) => {
+    if (EMBED || e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === "Escape") { if (!phone.hidden) closePhone(); setMenu(false); return; }
+    if (!phone.hidden || e.target.closest?.("#menu")) return;
+    const onButton = e.target.closest?.("button, a");
+    if (["ArrowRight", "PageDown", " ", "Enter"].includes(e.key)) { if (onButton && (e.key === " " || e.key === "Enter")) return; e.preventDefault(); next(); }
+    else if (["ArrowLeft", "PageUp", "Backspace"].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === "Home") show(0);
+    else if (e.key === "End") show(slides.length - 1);
+    else if (e.key.toLowerCase() === "f") toggleFull();
+    else if (e.key.toLowerCase() === "n") toggleNotes();
+  });
+
+  // click on the right half moves forward, left half back (outside links, buttons and video)
+  $("viewport").addEventListener("click", (e) => {
+    if (EMBED || e.target.closest("a, video, button")) return;
+    (e.clientX > window.innerWidth / 2 ? next : prev)();
+  });
+  // swipe on phones
+  let sx = null;
+  document.addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener("touchend", (e) => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 50) (dx < 0 ? next : prev)();
+    sx = null;
+  });
+
+  // hide the controls when the mouse is still (they come back on focus)
+  let idle;
+  const wake = () => {
+    $("ui").classList.remove("hide");
+    $("help").style.opacity = 1;
+    clearTimeout(idle);
+    idle = setTimeout(() => { $("ui").classList.add("hide"); $("help").style.opacity = 0; }, 2500);
+  };
+  document.addEventListener("mousemove", wake); wake();
+
+  // first slide: ?slide=N, #sN or #N
+  const q = parseInt(params.get("slide"), 10);
+  const hm = /^#s?(\d+)$/.exec(location.hash);
+  const h = hm ? parseInt(hm[1], 10) : NaN;
+  show(Number.isFinite(q) ? q - 1 : Number.isFinite(h) ? h - 1 : 0, false);
+  window.addEventListener("hashchange", () => { const m = /^#s?(\d+)$/.exec(location.hash); if (m && +m[1] - 1 !== i) show(+m[1] - 1, false); });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</body>
+</html>

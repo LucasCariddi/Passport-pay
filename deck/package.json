@@ -1,0 +1,11 @@
+{
+  "name": "passport-pay-deck",
+  "private": true,
+  "description": "Pitch deck tooling: the .pptx and .pdf are built by filling the official HackMeridian template (build-pptx.py, python-pptx); this package only makes the video poster. Outside the pnpm workspace.",
+  "type": "commonjs",
+  "scripts": {
+    "poster": "node make-poster.mjs",
+    "build": "python3 build-pptx.py",
+    "test": "node e2e-pitch.mjs"
+  }
+}
