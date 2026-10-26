@@ -1,0 +1,17 @@
+{
+  "name": "@passport-pay/mcp",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "description": "MCP server (stdio) that turns any MCP client into a Passport Pay buyer paying from its PassportAccount",
+  "bin": { "passport-pay-mcp": "src/server.mjs" },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test \"test/*.test.mjs\"",
+    "testnet": "node scripts/testnet-smoke.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "zod": "4.6.5"
+  }
+}
