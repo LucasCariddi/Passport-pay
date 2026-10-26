@@ -1,0 +1,13 @@
+{
+  "note": "Cuenta de prueba de la allowlist de destinos (contracts/scripts/smoke-payees.mjs). Solo IDs públicos.",
+  "account": "CA75KBZFQPJUT7BTACHE22XKQROIWL77I2YPDFTEH56PBQFD72VVUVAO",
+  "agentId": "2271406239",
+  "agentPublic": "GDNCWBPBDQH4OQ4EHLXVRONZSEBR776JVPI3J5EAZZ3Q5VVYXHWNHRVT",
+  "wasm": "b9dfc7c63110619e104fbeb8e912b1b004a4d7709bec57f5d2fbaef90197dd26",
+  "payees": [
+    "GCLNNJKDE7YK5BYOCIW3SOZW7NBPBCKPKXONLRYVUQRO5VZCGLVCVPPJ"
+  ],
+  "cap": "300000",
+  "agentSecretFile": ".secrets/demo-agent-2271406239.json",
+  "at": "2026-10-25T23:05:09.178Z"
+}

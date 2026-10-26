@@ -1,0 +1,51 @@
+{
+  "purpose": "PUBLIC demo account for the web app (/app), /api/demo/pay and /api/demo/inject (fire test). Testnet only.",
+  "network": "stellar:testnet",
+  "agentId": "2072842760",
+  "account": "CADZU573AKZ7WV4T5TPZRJOMFA2VTU4PTLXHP27R7WWDYJ2J7PFKNWFF",
+  "accountWasmHash": "b9dfc7c63110619e104fbeb8e912b1b004a4d7709bec57f5d2fbaef90197dd26",
+  "factory": "CDJKAFUYH6WE6OWLP3BPMUDLKHQTCENLZSKIMHBMH436F6DGSVJN26TJ",
+  "owner": "GCTAWGDLELL4VWAV7L57GVIL472CX6NMLFDRQ67EZ4LTSJFDN7UCSJYT",
+  "agentPublic": "GAH4LSOXBLWVTB24L77L3RB3P5S5AUPLW472O2RWPZS7A77ZS62VIBDF",
+  "payees": [
+    "GCLNNJKDE7YK5BYOCIW3SOZW7NBPBCKPKXONLRYVUQRO5VZCGLVCVPPJ"
+  ],
+  "payeesNote": "Payee list = only MERCHANT_PUBLIC (the server's payTo).",
+  "attacker": "GCCZXNV7U6MY6APDCWFXLAUTUOB63N6LTXZEMJ2Y4JJUJVGFEXQ7SNIN",
+  "attackerNote": "Attacker address from web/public/trampa (has a USDC trustline). Not on the payee list.",
+  "capUsdc": "0.05",
+  "capBase": "500000",
+  "periodLedgers": 720,
+  "periodApprox": "~1 h (720 ledgers at ~5 s)",
+  "passportSpendCapBase": "500000000",
+  "depositUsdc": "3",
+  "txs": {
+    "register": "cc40e4243577e31195c5078be9c43d129d631c82e403babab3783b082322256a",
+    "addPayee": "a667bc0f6984f9d7063101f86ddb424ac577f96a097ede3eaf4deea201687e2b",
+    "deposit": "7f42ef5abd96b5029cf520d82dbecfa01c68aaf443b47f19f3f9f54bcab4adbc"
+  },
+  "createdAt": "2026-10-25",
+  "agentSecretFile": ".secrets/demo-public-agent.secret (not in git; on Vercel it is DEMO_AGENT_SECRET)",
+  "previous": {
+    "purpose": "Previous public demo account (wasm f5ec1e6d, no payee list).",
+    "network": "stellar:testnet",
+    "agentId": "443284932",
+    "account": "CAGMBEI3DEJRUYETQ26VC6ZKERFEP3YYK76Z6AHBDPZDTZN3VGYWB7ZV",
+    "accountWasmHash": "f5ec1e6d5eb29e1975542e87d59655d9628e8606a60a8946bb17d9cd15aff903",
+    "factory": "CDJKAFUYH6WE6OWLP3BPMUDLKHQTCENLZSKIMHBMH436F6DGSVJN26TJ",
+    "owner": "GCTAWGDLELL4VWAV7L57GVIL472CX6NMLFDRQ67EZ4LTSJFDN7UCSJYT",
+    "agentPublic": "GDEWNT3JIHXQ2XVIHDY5V44FOBCNP2HDV4KXNZCPA3XV3DHUZK5ER7EN",
+    "capUsdc": "0.05",
+    "capBase": "500000",
+    "periodLedgers": 720,
+    "periodApprox": "~1 h (720 ledgers at ~5 s)",
+    "passportSpendCapBase": "500000000",
+    "depositUsdc": "3",
+    "txs": {
+      "register": "68a13f6a404fb021b62184eecfe5e4dbbb56b26d6a7525a04da42ccf4d2d0d32",
+      "deposit": "263034b026878e541e4df2f227206e26cc0557e070b04dc9e2af0f879d8125aa"
+    },
+    "createdAt": "2026-10-25",
+    "agentSecretFile": ".secrets/demo-public-agent-443284932.secret (not in git)"
+  }
+}

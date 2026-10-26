@@ -1,0 +1,79 @@
+{
+  "purpose": "Fire test (POST /api/demo/inject): following the order hidden in web/public/trampa, the demo agent signs a 5 USDC payment to the attacker and it is sent straight to the network. Testnet only, public data only.",
+  "network": "stellar:testnet",
+  "at": "2026-10-26T01:03:45Z",
+  "how": "Production: curl -X POST https://passport-pay-stellar.vercel.app/api/demo/inject -H 'content-type: application/json' -d '{\"force\":true}' (deploy of 26 Oct with DEMO_ACCOUNT_ID=CADZU573…NWFF). HTTP 200, verdict REJECTED, 7.8 s. Read back afterwards on Horizon and over RPC (getTransaction, diagnostic events).",
+  "server": "https://passport-pay-stellar.vercel.app",
+  "account": "CADZU573AKZ7WV4T5TPZRJOMFA2VTU4PTLXHP27R7WWDYJ2J7PFKNWFF",
+  "accountWasmHash": "b9dfc7c63110619e104fbeb8e912b1b004a4d7709bec57f5d2fbaef90197dd26",
+  "payees": ["GCLNNJKDE7YK5BYOCIW3SOZW7NBPBCKPKXONLRYVUQRO5VZCGLVCVPPJ"],
+  "agentPublic": "GAH4LSOXBLWVTB24L77L3RB3P5S5AUPLW472O2RWPZS7A77ZS62VIBDF",
+  "agentKeyHex": "0fc5c9d70aed59875c5ffebdc43b7f65d051ebb73fa76a367e65f07ff997b554",
+  "attacker": "GCCZXNV7U6MY6APDCWFXLAUTUOB63N6LTXZEMJ2Y4JJUJVGFEXQ7SNIN",
+  "transfer": {
+    "asset": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+    "from": "CADZU573AKZ7WV4T5TPZRJOMFA2VTU4PTLXHP27R7WWDYJ2J7PFKNWFF",
+    "to": "GCCZXNV7U6MY6APDCWFXLAUTUOB63N6LTXZEMJ2Y4JJUJVGFEXQ7SNIN",
+    "amountBase": "50000000",
+    "amountUsdc": "5",
+    "signedBy": "the agent's ed25519 key (0fc5c9d7…b554), the same key stored in the account's config().agent_key"
+  },
+  "simulation": {
+    "rejected": true,
+    "contractError": { "code": 10, "name": "PayeeNotAllowed", "raw": "Error(Contract, #10)" },
+    "attributedTo": "CADZU573AKZ7WV4T5TPZRJOMFA2VTU4PTLXHP27R7WWDYJ2J7PFKNWFF"
+  },
+  "forced": {
+    "hash": "4391c18e360dabd1be13a53849701fc510d99ab0f49d0bc445d5f9d6266b7828",
+    "status": "FAILED",
+    "ledger": 5390609,
+    "closedAt": "2026-10-26T01:03:52Z",
+    "link": "https://stellar.expert/explorer/testnet/tx/4391c18e360dabd1be13a53849701fc510d99ab0f49d0bc445d5f9d6266b7828",
+    "resultCode": "txFailed",
+    "contractError": { "code": 10, "name": "PayeeNotAllowed", "raw": "Error(Contract, #10)" },
+    "attributedTo": "CADZU573AKZ7WV4T5TPZRJOMFA2VTU4PTLXHP27R7WWDYJ2J7PFKNWFF",
+    "diagnosticEvent": "[\"error\", Error(Auth, InvalidAction)] \"failed account authentication with error\", CADZU573…NWFF, Error(Contract, #10)",
+    "feePayer": "GAH4LSOXBLWVTB24L77L3RB3P5S5AUPLW472O2RWPZS7A77ZS62VIBDF",
+    "feeChargedStroops": "13674"
+  },
+  "moreRuns": [
+    {
+      "how": "Local server (node server/src/index.mjs) + curl -X POST /api/demo/inject -d '{\"force\":true}'",
+      "at": "2026-10-26T00:05:57Z",
+      "hash": "fc96df79fe069308611548c924e3ab6853cc4717cf2bd3fdbba4a089e686fbe7",
+      "status": "FAILED",
+      "ledger": 5389914,
+      "contractError": { "code": 10, "name": "PayeeNotAllowed", "raw": "Error(Contract, #10)" },
+      "attributedTo": "CADZU573AKZ7WV4T5TPZRJOMFA2VTU4PTLXHP27R7WWDYJ2J7PFKNWFF",
+      "feeChargedStroops": "13668"
+    },
+    {
+      "how": "Headless Chromium pressing \"Send the attacker's order\" in /app (vite dev + local server), web/e2e/fire-test-smoke.mjs --send",
+      "at": "2026-10-26T00:13:07Z",
+      "hash": "783e82b113131fa28fec2b92c5541dffb1d094edc692b9ed99673198034e9f13",
+      "status": "FAILED",
+      "ledger": 5390000,
+      "contractError": { "code": 10, "name": "PayeeNotAllowed", "raw": "Error(Contract, #10)" },
+      "attributedTo": "CADZU573AKZ7WV4T5TPZRJOMFA2VTU4PTLXHP27R7WWDYJ2J7PFKNWFF",
+      "feeChargedStroops": "13674"
+    },
+    {
+      "how": "Headless Chromium pressing \"Send the attacker's order\" in /app on the local build (public/ served with the Vercel routes + local server), while taking docs/screenshots/design-app-fire-*.png",
+      "at": "2026-10-26T00:51:47Z",
+      "hash": "405dfb8132a0decc489844cdddb153c6c1b44029aa1572359c28f9fe1c86215e",
+      "status": "FAILED",
+      "ledger": 5390464,
+      "contractError": { "code": 10, "name": "PayeeNotAllowed", "raw": "Error(Contract, #10)" },
+      "attributedTo": "CADZU573AKZ7WV4T5TPZRJOMFA2VTU4PTLXHP27R7WWDYJ2J7PFKNWFF",
+      "feeChargedStroops": "13674"
+    }
+  ],
+  "attackerBalanceUsdc": { "before": "0", "after": "0" },
+  "accountSpentUsdc": { "before": "0.02", "after": "0.02", "cap": "0.05" },
+  "accountBalanceUsdcAfter": "2.98",
+  "notes": [
+    "The server signs with the demo agent's key, acting as an agent that obeyed the order. This is not the run of the real LLM agent (that lives in scenario/).",
+    "The 0.02 USDC already spent in the period before the production run are two x402 payments of 0.01 USDC to the merchant (one is b5bdf254…0bd7, the local \"Try as an agent\" run); the fire test did not move it.",
+    "Error #10 from the USDC contract also means insufficient balance. Here the diagnostic event attributes it to the account's __check_auth, and the payee check runs before the amount and cap checks (ARCHITECTURE 4.3)."
+  ]
+}
