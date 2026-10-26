@@ -1,0 +1,24 @@
+/* Catalog: one card per service with its price, then the purchases table. Uses the tokens from styles.css. */
+.catalog { display: flex; flex-direction: column; gap: 24px; }
+.svcs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; align-items: start; }
+.svc {
+  display: flex; flex-direction: column; gap: 16px; min-width: 0; padding: 24px;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+}
+.svc-head { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.svc-head h3 { font-size: 16px; letter-spacing: -0.01em; }
+.svc-price { font-size: 24px; font-weight: 600; line-height: 1.2; letter-spacing: -0.025em; font-variant-numeric: tabular-nums; color: var(--fg); }
+.svc-price small { display: block; margin-top: 2px; font-size: 13px; font-weight: 400; letter-spacing: 0; color: var(--muted-2); }
+.svc-body { display: flex; flex-direction: column; gap: 14px; }
+.svc-sum { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.55; }
+.svc-kv { margin: 0; padding-top: 14px; border-top: 1px solid var(--border); font-size: 13px; }
+.svc-body > .btn { align-self: flex-start; }
+.svc-how { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; min-width: 0; padding-top: 16px; border-top: 1px solid var(--border); }
+.svc-how p { margin: 0; }
+.svc-cmd { display: flex; gap: 8px; align-items: center; min-width: 0; padding: 8px 8px 8px 12px; background: var(--subtle); border: 1px solid var(--border); border-radius: 8px; }
+.svc-cmd code { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 12.5px; line-height: 1.5; }
+.svc-pre { margin: 8px 0 0; padding: 12px; max-height: 240px; overflow: auto; font-size: 12px; line-height: 1.55; background: var(--subtle); border: 1px solid var(--border); border-radius: 8px; }
+details summary { cursor: pointer; min-height: 32px; display: flex; align-items: center; font-weight: 500; color: var(--fg); }
+.empty p { margin: 0 0 4px; }
+.catalog-errp { margin: 0 0 8px; }
+.catalog-soon { margin: 0; color: var(--muted-2); }

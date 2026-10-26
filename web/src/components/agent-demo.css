@@ -1,0 +1,48 @@
+/* "Try as an agent" (AgentDemoPanel.tsx). Uses the tokens from styles.css. */
+.demo-meter {
+  display: flex; flex-wrap: wrap; align-items: stretch; font-size: 14px;
+  background: var(--subtle); border: 1px solid var(--border); border-radius: 10px;
+}
+.demo-field { flex: 1 1 200px; min-width: 0; padding: 12px 16px; border-left: 1px solid var(--border); }
+.demo-field:first-child { border-left: 0; }
+.demo-field.muted { display: flex; align-items: center; color: var(--muted); }
+.field-l { display: block; font-size: 12px; color: var(--muted-2); margin-bottom: 2px; }
+.demo-field strong { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* three steps as small cards */
+.try-steps { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.try-step {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: 24px auto; align-content: start; align-items: center; gap: 12px; min-width: 0; padding: 16px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+}
+.try-step > .try-n { grid-column: 1; grid-row: 1; }
+.try-step > .pill { grid-column: 2; grid-row: 1; justify-self: end; align-self: center; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.try-title { grid-column: 1 / -1; font-size: 15px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
+.try-detail { grid-column: 1 / -1; margin-top: -6px; font-size: 13px; line-height: 1.55; color: var(--muted); overflow-wrap: anywhere; }
+.try-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* results: a bordered sub-panel, HTTP codes as small badges */
+.demo-box { display: grid; gap: 12px; min-width: 0; padding: 16px; background: var(--subtle); border: 1px solid var(--border); border-radius: 10px; }
+.demo-box > div[data-testid="demo-402"] { display: grid; gap: 12px; }
+.demo-http { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+.demo-http .mono { overflow-wrap: anywhere; }
+.demo-code {
+  display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 6px; border: 1px solid transparent;
+  font: 500 12px/1 var(--mono); white-space: nowrap;
+}
+.demo-code.ok { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-fg); }
+.demo-code.warn { background: var(--secondary); color: var(--fg-2); }
+.demo-resp { overflow-wrap: anywhere; margin: 0; }
+.demo-check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; flex: 1 1 280px; font-size: 13px; font-weight: 400; color: var(--muted); }
+.demo-check input[type="checkbox"] { width: 16px; height: 16px; flex: none; margin: 2px 0 0; accent-color: var(--primary); }
+.over-result { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.over-text { display: grid; gap: 10px; width: 100%; min-width: 0; }
+
+@media (max-width: 960px) {
+  .try-steps { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .demo-field { flex-basis: 100%; border-left: 0; padding: 10px 14px; }
+  .demo-field + .demo-field { border-top: 1px solid var(--border); }
+  .try-actions .btn { width: 100%; }
+}

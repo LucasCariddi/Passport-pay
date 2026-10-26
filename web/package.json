@@ -1,0 +1,32 @@
+{
+  "name": "@passport-pay/web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "e2e": "node e2e/mint-e2e.mjs",
+    "dev:landing": "vite --config vite.landing.config.ts",
+    "build:landing": "vite build --config vite.landing.config.ts",
+    "preview:landing": "vite preview --config vite.landing.config.ts"
+  },
+  "dependencies": {
+    "@creit.tech/stellar-wallets-kit": "2.7.1",
+    "@stellar/stellar-sdk": "^17.3.0",
+    "buffer": "^6.0.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "snarkjs": "0.7.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "playwright": "^1.64.1",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
+  }
+}

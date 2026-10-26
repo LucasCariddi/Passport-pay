@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "types": ["vite/client"],
+    // Apagado porque tsc también revisa vendor/osp (bindings generados con
+    // imports sin usar) y esos archivos no se tocan.
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "paths": {
+      "buffer": ["./node_modules/buffer"],
+      "@stellar/stellar-sdk": ["./node_modules/@stellar/stellar-sdk"],
+      "@stellar/stellar-sdk/*": ["./node_modules/@stellar/stellar-sdk/*"]
+    }
+  },
+  "include": ["src", "../vendor/osp/sdk/src/prover.ts", "../vendor/osp/sdk/src/snarkjs.d.ts"]
+}
