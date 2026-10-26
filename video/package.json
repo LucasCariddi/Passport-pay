@@ -1,0 +1,14 @@
+{
+  "name": "passport-pay-video",
+  "private": true,
+  "type": "module",
+  "description": "Graba el video demo contra la URL de produccion (screencast de Chrome cuadro por cuadro + ffmpeg-static). Fuera del workspace de pnpm.",
+  "scripts": {
+    "capture": "node capture.mjs",
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "ffmpeg-static": "5.2.0",
+    "playwright": "1.64.1"
+  }
+}
