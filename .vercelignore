@@ -1,0 +1,13 @@
+# Lo que NUNCA sube a Vercel con `vercel deploy` (ver docs/DEPLOY.md).
+.env
+.env.*
+!.env.example
+.secrets/
+.vercel/
+**/node_modules/
+contracts/target/
+web/dist/
+public/
+*.log
+*.tsbuildinfo
+docs/screenshots/
