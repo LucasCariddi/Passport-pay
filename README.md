@@ -25,22 +25,6 @@ HackMeridian Genesis · Tracks **Stellar Unlocked** (primary) and **Stellar Comp
 
 ---
 
-## For judges: requirements and where to find them
-
-| Requirement | Evidence |
-|---|---|
-| Public repo with source | This repository (contracts, server, agent, MCP, web, scripts) |
-| Problem, target user, value proposition | [Who it is for](#who-it-is-for) and [The problem](#the-problem) |
-| Setup, installation, environment variables, demo instructions | [Run it](#run-it) and [Environment variables](#environment-variables) |
-| Architecture: how Stellar is used, assets, contract IDs, wallets, APIs | [Architecture](#architecture), [Contracts and IDs on testnet](#contracts-and-ids-on-testnet), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
-| Working live demo with a public URL | https://passport-pay-stellar.vercel.app/app (prompt injection test, x402 purchase, owner panel) |
-| Video walkthrough | https://passport-pay-stellar.vercel.app/video (2:23) |
-| Onchain transactions on Stellar Testnet | [Evidence on testnet](#evidence-on-testnet): every SUCCESS and FAILED links to stellar.expert |
-| Genesis: functional MVP on testnet, built during the event | [What we built during the event](#what-we-built-during-the-event) and [Prior work, declared](#prior-work-declared) |
-| Stellar Unlocked: a new or recently expanded capability, used meaningfully | [Why Stellar Unlocked](#why-stellar-unlocked) |
-| Stellar Composed: rationale for combining components | [Tracks](#tracks-stellar-unlocked-primary-and-stellar-composed) |
-| Pitch deck | https://passport-pay-stellar.vercel.app/presentacion (speaker view at `/notas`) |
-
 ## Who it is for
 
 - **Teams that run AI agents with money**: they need to give an agent a budget without trusting the
@@ -52,11 +36,11 @@ HackMeridian Genesis · Tracks **Stellar Unlocked** (primary) and **Stellar Comp
 - **The Stellar ecosystem**: x402 and MPP are live on Stellar; Passport Pay adds the missing
   piece, bounded and revocable authority for the agent that pays.
 
-## Why Stellar Unlocked
+## What Soroban makes possible here
 
-Two Soroban capabilities make this practical on Stellar now, and Passport Pay builds on both:
+Two Soroban capabilities make this practical on Stellar, and Passport Pay builds on both:
 
-- **BN254 host functions** (pairing and curve operations, recently added to Soroban): they make
+- **BN254 host functions** (pairing and curve operations in Soroban): they make
   verifying a Groth16 ZK proof onchain cheap enough to do as part of registering an agent. The
   passport is verified onchain, not by our server.
 - **Custom account authorization (`__check_auth`)**: the agent's wallet is a contract whose own
