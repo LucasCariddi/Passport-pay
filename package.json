@@ -1,0 +1,21 @@
+{
+  "name": "passport-pay",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.24.0",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "spike": "node scripts/spike-x402.mjs",
+    "demo": "bash scripts/demo.sh",
+    "test": "bash scripts/test-all.sh",
+    "setup:testnet": "node scripts/setup-testnet.mjs"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^16.3.0",
+    "@x402/core": "2.28.0",
+    "@x402/express": "2.28.0",
+    "@x402/fetch": "2.28.0",
+    "@x402/stellar": "2.28.0",
+    "express": "^5.1.0"
+  }
+}
