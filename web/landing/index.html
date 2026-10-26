@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passport Pay</title>
+    <meta name="description" content="AI agents pay for APIs over x402 on Stellar. Each agent carries a ZK passport and its own smart account enforces the spending rules onchain, so a hijacked agent still cannot drain the wallet." />
+    <meta property="og:title" content="Passport Pay" />
+    <meta property="og:description" content="Give your agent money. Not the power to drain it." />
+    <meta property="og:image" content="/media/app-fire-light.webp" />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)" />
+    <!--pp:favicon-->
+    <!--pp:fonts-->
+    <link rel="stylesheet" href="/site.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <!--pp:header-->
+
+    <main id="main">
+      <!-- 1. Hero -->
+      <section id="top" class="hero" aria-labelledby="hero-title">
+        <div class="wrap">
+          <span class="pill"><span class="live" aria-hidden="true"></span>HackMeridian 2026 · Stellar Unlocked + Composed</span>
+          <h1 id="hero-title">Give your agent money.<br />Not the power to drain it.</h1>
+          <p class="sub">AI agents pay for APIs over x402 on Stellar. Their own smart account enforces the spending rules onchain, so a hijacked agent still cannot drain the wallet.</p>
+          <div class="ctas">
+            <a class="btn primary lg" href="/app#fire">Run the injection test<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a class="btn outline lg" href="/video"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/></svg>Watch the demo (2:23)</a>
+          </div>
+          <p class="meta">Live on Stellar testnet, no real money · <a href="/presentacion">See the 2:30 pitch</a></p>
+
+          <div class="shot">
+            <figure class="browser" aria-label="Screenshot of the live app at passport-pay-stellar.vercel.app/app">
+              <div class="browser-bar" aria-hidden="true">
+                <span class="dots"><i></i><i></i><i></i></span>
+                <span class="url">passport-pay-stellar.vercel.app/app</span>
+                <span></span>
+              </div>
+              <img class="theme-img-light" src="/media/app-fire-light.webp" srcset="/media/app-fire-light.webp 1200w, /media/app-fire-light@2x.webp 2400w" sizes="(min-width: 1200px) 1104px, 100vw" width="1200" height="1238" decoding="async" loading="lazy" alt="The live app: the prompt injection test shows the attacker's hidden order, the agent's key that signs it and the rule onchain, with the network's answer: FAILED onchain, Error(Contract, #10) PayeeNotAllowed." />
+              <img class="theme-img-dark" src="/media/app-fire-dark.webp" srcset="/media/app-fire-dark.webp 1200w, /media/app-fire-dark@2x.webp 2400w" sizes="(min-width: 1200px) 1104px, 100vw" width="1200" height="1238" decoding="async" loading="lazy" alt="The live app: the prompt injection test shows the attacker's hidden order, the agent's key that signs it and the rule onchain, with the network's answer: FAILED onchain, Error(Contract, #10) PayeeNotAllowed." />
+            </figure>
+            <div class="shot-try">
+              <img class="theme-img-light" src="/media/app-try-light.webp" srcset="/media/app-try-light.webp 1104w, /media/app-try-light@2x.webp 2208w" sizes="(min-width: 1024px) 600px, 100vw" width="1104" height="487" decoding="async" loading="lazy" alt="Try as an agent: a test agent pays 0.01 USDC over x402 (SUCCESS) and an over-cap payment is refused (FAILED, CapExceeded)." />
+              <img class="theme-img-dark" src="/media/app-try-dark.webp" srcset="/media/app-try-dark.webp 1104w, /media/app-try-dark@2x.webp 2208w" sizes="(min-width: 1024px) 600px, 100vw" width="1104" height="487" decoding="async" loading="lazy" alt="Try as an agent: a test agent pays 0.01 USDC over x402 (SUCCESS) and an over-cap payment is refused (FAILED, CapExceeded)." />
+            </div>
+            <div class="shot-foot">
+              <a class="hero-stamp" href="{{link:payeeNotAllowed.tx}}" target="_blank" rel="noopener" aria-label="Rejected by Stellar testnet: PayeeNotAllowed, error 10. Transaction {{short:payeeNotAllowed.tx}} on stellar.expert">
+                <span class="badge bad">REJECTED</span>
+                <span>PayeeNotAllowed #10</span>
+                <span class="mono">tx {{short:payeeNotAllowed.tx}}</span>
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg>
+              </a>
+              <p class="shot-caption">Captured from the live app on Stellar testnet.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Demo -->
+      <section id="demo" class="section alt" aria-labelledby="demo-title">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">Demo</span>
+            <h2 id="demo-title">A real agent, a real hijack, a real refusal.</h2>
+            <p>Two minutes and 23 seconds, no voiceover, English captions on screen. The hijack first, then a legitimate purchase over x402, the owner panel and the catalog.</p>
+          </div>
+          <div class="card video-card">
+            <video controls preload="none" playsinline poster="/media/demo-poster.png" width="1920" height="1080" aria-label="Passport Pay demo video, 2 minutes 23 seconds, captions on screen">
+              <source src="/media/demo.mp4" type="video/mp4" />
+              <a href="/media/demo.mp4">Download the demo video (MP4)</a>
+            </video>
+            <ol id="incident" class="seen" aria-label="What you see in the demo">
+              <li>
+                <span class="n" aria-hidden="true">1</span>
+                <h3>It reads a poisoned page</h3>
+                <p>A real LLM agent (gpt-4o-mini) reads a <a href="/trampa">page we staged</a> that hides an order: send 5 USDC to an attacker.</p>
+              </li>
+              <li>
+                <span class="n" aria-hidden="true">2</span>
+                <h3>It obeys and signs</h3>
+                <p>The agent calls its pay tool and signs the transfer with its own key. Nothing in the agent stops it.</p>
+              </li>
+              <li>
+                <span class="n" aria-hidden="true">3</span>
+                <h3>Stellar refuses it</h3>
+                <p>The payee is not on the owner's list, so the agent's smart account rejects it onchain: FAILED, PayeeNotAllowed.</p>
+                <!--pp:if:injection-->
+                <a class="tx" href="{{link:injection.tx}}" target="_blank" rel="noopener">tx {{short:injection.tx}} on stellar.expert</a>
+                <!--pp:else-->
+                <a class="tx" href="{{link:payeeNotAllowed.tx}}" target="_blank" rel="noopener">Same check, scripted: tx {{short:payeeNotAllowed.tx}}</a>
+                <!--pp:fi-->
+              </li>
+            </ol>
+          </div>
+          <div class="after-card">
+            <p class="small">The FAILED transactions in the video were sent to the network on purpose. On the normal x402 path a refused payment stops at simulation.</p>
+            <div class="ctas">
+              <a class="btn outline" href="/video">Open the video page</a>
+              <a class="btn ghost" href="/media/demo.mp4" download>Download the MP4</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. How it works -->
+      <section id="how" class="section" aria-labelledby="how-title">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">How it works</span>
+            <h2 id="how-title">Prove. Bind. Enforce.</h2>
+            <p>x402 tells an agent how to pay. A cap in your server only works if the agent goes through your server. The rules have to live where the money lives.</p>
+          </div>
+          <div class="grid-3">
+            <article class="card feature">
+              <span class="icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <h3>Prove <span>one passport per agent</span></h3>
+              <p>The owner generates a ZK passport credential in the browser, anti-Sybil by nullifier. It is verified onchain without revealing who the owner is.</p>
+              <span class="tech">Circom · Groth16 · BN254 verifier on Soroban</span>
+            </article>
+            <article class="card feature">
+              <span class="icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+              <h3>Bind <span>one passport, one account</span></h3>
+              <p>The factory verifies the proof and deploys the agent's own smart account in the same transaction. The owner sets a spend cap and the payees it may pay.</p>
+              <span class="tech"><code>PassportFactory.register</code></span>
+            </article>
+            <article class="card feature">
+              <span class="icon" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <h3>Enforce <span>every payment checked</span></h3>
+              <p>Before a USDC transfer settles, the account checks a live passport, an allowed payee, the cap for the period and revocation. Otherwise the ledger refuses.</p>
+              <span class="tech"><code>PassportAccount.__check_auth</code></span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Proof -->
+      <section id="proof" class="section alt" aria-labelledby="proof-title">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">Proof</span>
+            <h2 id="proof-title">Every row is a real testnet transaction.</h2>
+            <p>The FAILED rows were sent straight to the network, skipping our server and the facilitator. The contract rejected them on its own. <a href="/docs#evidence-on-testnet">Every run, with its hashes</a>.</p>
+          </div>
+          <div class="card table-card" role="region" aria-label="Testnet transactions" tabindex="0">
+            <table class="ledger">
+              <thead>
+                <tr><th scope="col">What happened</th><th scope="col">Result</th><th scope="col">Date (UTC)</th><th scope="col" class="l-tx">Transaction</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="l-what">Prompt-injected agent pays the attacker</td>
+                  <!--pp:if:injection-->
+                  <td class="l-result"><span class="badge bad">FAILED</span><span class="reason">PayeeNotAllowed</span></td>
+                  <td class="l-date"><time datetime="{{ev:injection.at}}">{{date:injection.at}}<span class="t">{{time:injection.at}}</span></time></td>
+                  <td class="l-tx"><a class="hash" href="{{link:injection.tx}}" target="_blank" rel="noopener">{{short:injection.tx}}<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></a></td>
+                  <!--pp:else-->
+                  <td class="l-result"><span class="badge wait">Coming in the next run</span></td>
+                  <td class="l-date"><span class="muted">Pending</span></td>
+                  <td class="l-tx"><span class="muted">No hash yet</span></td>
+                  <!--pp:fi-->
+                </tr>
+                <tr>
+                  <td class="l-what">{{ev:paid.what}}</td>
+                  <td class="l-result"><span class="badge ok">SUCCESS</span></td>
+                  <td class="l-date"><time datetime="{{ev:paid.at}}">{{date:paid.at}}<span class="t">{{time:paid.at}}</span></time></td>
+                  <td class="l-tx"><a class="hash" href="{{link:paid.tx}}" target="_blank" rel="noopener">{{short:paid.tx}}<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></a></td>
+                </tr>
+                <tr>
+                  <td class="l-what">{{ev:capExceeded.what}}</td>
+                  <td class="l-result"><span class="badge bad">FAILED</span><span class="reason">CapExceeded</span></td>
+                  <td class="l-date"><time datetime="{{ev:capExceeded.at}}">{{date:capExceeded.at}}<span class="t">{{time:capExceeded.at}}</span></time></td>
+                  <td class="l-tx"><a class="hash" href="{{link:capExceeded.tx}}" target="_blank" rel="noopener">{{short:capExceeded.tx}}<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></a></td>
+                </tr>
+                <tr>
+                  <td class="l-what">{{ev:payeeNotAllowed.what}}</td>
+                  <td class="l-result"><span class="badge bad">FAILED</span><span class="reason">PayeeNotAllowed</span></td>
+                  <td class="l-date"><time datetime="{{ev:payeeNotAllowed.at}}">{{date:payeeNotAllowed.at}}<span class="t">{{time:payeeNotAllowed.at}}</span></time></td>
+                  <td class="l-tx"><a class="hash" href="{{link:payeeNotAllowed.tx}}" target="_blank" rel="noopener">{{short:payeeNotAllowed.tx}}<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></a></td>
+                </tr>
+                <tr>
+                  <td class="l-what">{{ev:revoked.what}}</td>
+                  <td class="l-result"><span class="badge bad">FAILED</span><span class="reason">Revoked</span></td>
+                  <td class="l-date"><time datetime="{{ev:revoked.at}}">{{date:revoked.at}}<span class="t">{{time:revoked.at}}</span></time></td>
+                  <td class="l-tx"><a class="hash" href="{{link:revoked.tx}}" target="_blank" rel="noopener">{{short:revoked.tx}}<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="rules">
+            <div class="card">
+              <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Enforced onchain</h3>
+              <p>Spend cap per period, allowed payees, owner revocation and a live passport, all in the account's <code>__check_auth</code>. The official x402 facilitator rejects at simulation and the ledger rejects if anyone skips it.</p>
+            </div>
+            <div class="card">
+              <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Checked by the seller</h3>
+              <p>“Only passport accounts may buy” is the API's own rule: it reads the factory onchain before serving. A token transfer cannot be refused by whoever receives it, so we say so plainly.</p>
+            </div>
+          </div>
+          <p class="small limits">Known limits, said plainly: the prior passport validator does not restrict who can mint a passport, so today the passport is a ZK passport credential, one per agent, anti-Sybil by nullifier, not proof of a unique person. The payee list ships with the new account contract (wasm <code>b9dfc7c6…</code>); accounts created before it (wasm <code>f5ec1e6d…</code> and older) only have the cap. Our own review found a way for a third party to lock the first accounts; we <a href="/docs#security-fix-during-the-event">fixed it for new accounts during the event</a>. <a href="/docs#honest-limitations">All limitations</a>.</p>
+        </div>
+      </section>
+
+      <!-- 5. Built with + prior work -->
+      <section id="stack" class="section" aria-labelledby="stack-title">
+        <div class="wrap split">
+          <div>
+            <h2 id="stack-title">Built with</h2>
+            <dl class="kv">
+              <div><dt>x402</dt><dd>Official <code>@x402/stellar</code> facilitator, unchanged. Our client signs for a contract account.</dd></div>
+              <div><dt>Soroban</dt><dd>PassportAccount (custom <code>__check_auth</code>) and PassportFactory.</dd></div>
+              <div><dt>ZK</dt><dd>Groth16 proof verified on BN254 host functions.</dd></div>
+              <div><dt>USDC</dt><dd>Circle USDC on testnet through its Stellar Asset Contract.</dd></div>
+            </dl>
+            <p id="market" class="small">Live catalog, priced per call: network insight (0.01 USDC), an XLM/USDC quote (0.02 USDC) and a full report the agent sizes itself (0.05 to 100 USDC). Next, any API can list here, and outcome-based work settles through Trustless Work escrow.</p>
+          </div>
+          <div>
+            <h2>Prior work, declared</h2>
+            <dl class="kv stacked">
+              <div><dt>open-stellar-passport</dt><dd>The ZK circuit, verifier and validator, from Stellar Hacks: Real-World ZK. Used as a library, unmodified.</dd></div>
+              <div><dt>Open Stellar (now agentic-city)</dt><dd>Our earlier agent marketplace with x402 receipts and a passport concept, checked in the backend. Passport Pay moves that check onchain.</dd></div>
+              <div><dt>Trustless Work research</dt><dd>Our evidence note in agentic-escrow-research (PR #7). Their thesis completes ours: a cap limits how much, escrow limits when.</dd></div>
+            </dl>
+            <p class="small">Built during the event: the smart account, the factory, the x402 client for contract accounts, the payee list, the MCP server, the web app and this site. <a href="/docs#prior-work-declared">Prior work in detail</a>.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--pp:footer-->
+  </body>
+</html>
