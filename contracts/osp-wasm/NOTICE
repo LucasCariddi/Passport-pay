@@ -1,0 +1,16 @@
+Archivos de terceros: open-stellar-passport (Bitcoindefi/open-stellar-passport)
+Licencia: Apache License 2.0 (ver LICENSE en esta carpeta).
+
+- agent_passport_validator.deployed.wasm: wasm del AgentPassportValidator desplegado
+  en testnet (CDNSZUNEWFCGSPWLPDSWTENR2WPHKC34RGZQG7RJA54OPGTZGVVRFYBA), bajado con
+  `stellar contract fetch`. sha256 2cd2e49c99832a909f8ee8a62b1725dc2f8aae650bb0cd833c8b512c3937858b.
+- circom_groth16_verifier.deployed.wasm: verificador Groth16 BN254 desplegado
+  (CCMKLYSRUH2HMA4UU6WLXWQXEY6KAH5AWB5BEVMJGNGC5GLGTVROLG4A). Derivado de
+  NethermindEth/stellar-private-payments (Apache-2.0).
+  sha256 98b1823e4b07ac5aa2dff0332eb9b15ecea5efa95a35376caff21bffe269f8bc.
+- fixtures/proof_agent42.json y fixtures/public_agent42.json: prueba Groth16 real del
+  agente #42 (copiada de vendor/osp/zk/spent_*.json). En testnet ya está gastada; en
+  los tests unitarios se usa contra un validador nuevo, donde el nullifier está libre.
+
+No se modificó ninguno de estos archivos. Se usan solo para tests (contractimport y
+registro de wasm en el entorno de pruebas de soroban-sdk).

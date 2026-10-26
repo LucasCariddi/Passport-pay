@@ -1,0 +1,54 @@
+open-stellar-passport
+Copyright 2024-2025 the open-stellar-passport contributors
+
+This product includes software developed at or derived from third-party projects.
+The attributions below satisfy the NOTICE requirements of the Apache License 2.0
+and acknowledge the GPL-3.0 circomlib dependency used at circuit-compile time.
+
+=============================================================================
+NethermindEth/stellar-private-payments
+=============================================================================
+The files under circuits/lib/keypair.circom, circuits/lib/merkleProof.circom,
+circuits/lib/poseidon2/, and the Soroban circom-groth16-verifier contract are
+adapted from:
+
+  NethermindEth/stellar-private-payments
+  https://github.com/NethermindEth/stellar-private-payments
+  Copyright 2024 Nethermind
+  Licensed under the Apache License, Version 2.0
+
+  SPDX-License-Identifier: Apache-2.0
+
+=============================================================================
+tornadocash/tornado-nova
+=============================================================================
+The circuit building blocks in circuits/lib/ (keypair, merkleProof) originate
+from:
+
+  tornadocash/tornado-nova
+  https://github.com/tornadocash/tornado-nova
+  Copyright 2021 Tornado Cash contributors
+  Licensed under the MIT License
+
+  SPDX-License-Identifier: MIT
+
+=============================================================================
+iden3/circomlib
+=============================================================================
+The files under circuits/lib/circomlib/ are vendored from:
+
+  iden3/circomlib
+  https://github.com/iden3/circomlib
+  Copyright 2018 0kims association
+  Licensed under the GNU General Public License v3.0
+
+  SPDX-License-Identifier: GPL-3.0
+
+  Note: circomlib is used exclusively at circuit-compile time to produce the
+  R1CS/WASM/zkey artefacts committed to this repository. The compiled ZK
+  artefacts (agent_passport.wasm, agent_passport_final.zkey,
+  verification_key.json) do not incorporate circomlib source code and are
+  distributed under the Apache-2.0 terms of this project. The circomlib
+  source files themselves remain under GPL-3.0 and are retained unmodified
+  under circuits/lib/circomlib/ to satisfy that license's source-retention
+  requirements.
